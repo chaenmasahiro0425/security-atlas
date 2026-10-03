@@ -4,6 +4,7 @@
 
 ### 日本企業の情報漏洩まとめ。多すぎます。
 
+オープンソースのセキュリティ事件データベース。<br>
 事件を可視化し、同じ被害を繰り返さないために。<br>
 一次情報・原因の整理・点検プロンプトを、誰でも使える形で公開します。
 
@@ -92,4 +93,4 @@ E2E実行には開発サーバーが必要です。検索、年度、新着カ�
 
 コード：MIT（[LICENSE](LICENSE)）。独自編集データ：CC BY 4.0（[DATA-LICENSE.md](DATA-LICENSE.md)）。企業ロゴ、公式資料、リンク先の図版・文章の権利は各権利者に帰属します。提携や推奨を意味しません。
 
-個人運営のオープンな学習プロジェクトです。調査の入口：[piyolog](https://piyolog.hatenadiary.jp/) / [Socket Blog](https://socket.dev/blog)
+コードと独自編集データを公開し、みんなで育てるオープンソースのデータベースです。調査の入口：[piyolog](https://piyolog.hatenadiary.jp/) / [Socket Blog](https://socket.dev/blog)

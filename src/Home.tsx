@@ -49,9 +49,9 @@ export function Home({
             <em>多すぎます。</em>
           </h1>
           <p>
-            事件を可視化し、同じ被害を繰り返さないために。
+            オープンソースのデータベースで、事件を可視化。
             <br />
-            一次情報と点検プロンプトを、誰でも使える形で公開します。
+            一次情報と点検プロンプトを共有し、同じ被害を防ぐために。
           </p>
           <a className="atlas-cta" href="#database">
             事件データベースを見る <ArrowRight size={18} />
@@ -213,8 +213,7 @@ export function Community() {
           次の誰かの備えに。
         </h2>
         <p>
-          事件を記録し、根拠を確かめ、点検に活かす。学びをみんなで共有するためのSecurity
-          Atlasです。
+          事件を記録し、根拠を確かめ、点検に活かす。学びをみんなで共有するためのオープンソースのデータベースです。
         </p>
         <div className="roadmap">
           <Code />
@@ -236,7 +235,7 @@ export function Community() {
           </div>
         </div>
         <a href={repo} target="_blank" rel="noreferrer">
-          GitHubでソースと資料を見る ↗
+          GitHubでコード・データ・利用条件を見る ↗
         </a>
       </div>
       <form
