@@ -300,85 +300,107 @@ em {
 }
 .annual-impact {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.35fr) minmax(0, 0.65fr);
-  gap: 30px;
-  padding: 45px 0 30px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.25fr) minmax(0, 0.65fr);
+  gap: 36px;
+  padding: 48px 0 32px;
   border-top: 2px solid var(--blue);
   border-bottom: 1px solid var(--line);
   align-items: center;
 }
+.annual-heading .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
 .annual-heading h2 {
-  font-size: 27px;
-  line-height: 1.7;
+  font-size: clamp(22px, 1.8vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.65;
   margin: 16px 0;
 }
 .annual-heading p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
 }
+.annual-main {
+  min-width: 0;
+  container-type: inline-size;
+}
 .annual-main > span {
-  font-size: 11px;
+  display: block;
+  font-size: 13px;
+  line-height: 1.7;
   color: var(--muted);
 }
 .annual-main > div {
   display: flex;
-  gap: 9px;
-  align-items: center;
+  gap: 12px;
+  align-items: baseline;
   color: var(--blue);
-  line-height: 1.15;
+  margin: 18px 0 16px;
+  white-space: nowrap;
+}
+.annual-main b,
+.annual-sub b {
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 700;
+  letter-spacing: -0.035em;
 }
 .annual-main b {
-  font-size: clamp(64px, 8.3vw, 132px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
+  font-size: clamp(44px, 19cqw, 96px);
+  line-height: 1;
 }
 .annual-main strong {
-  font-size: 27px;
-  line-height: 1.6;
-  padding-top: 8px;
+  font-size: clamp(18px, 5cqw, 26px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
 }
-.annual-main small {
-  font-size: 10px;
+.annual-main > small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.8;
 }
-.annual-main { min-width: 0; container-type: inline-size; }
-.annual-main b { font-size: clamp(48px, 23cqw, 125px); white-space: nowrap; }
-.annual-main strong { font-size: clamp(20px, 6cqw, 30px); white-space: nowrap; padding-top: 16px; }
 .annual-sub > div + div {
   border-top: 1px solid var(--line);
-  padding-top: 12px;
-  margin-top: 12px;
+  padding-top: 18px;
+  margin-top: 18px;
 }
 .annual-sub b {
-  display: block;
-  font-size: 40px;
-  line-height: 1.4;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 38px;
+  line-height: 1.2;
   color: var(--blue);
-  letter-spacing: -0.05em;
+  margin-bottom: 8px;
 }
 .annual-sub b small {
-  font-size: 15px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--blue);
-  margin-left: 4px;
+  letter-spacing: 0;
 }
 .annual-sub span {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.8;
   display: block;
 }
 .annual-method {
   grid-column: 1/-1;
-  font-size: 10px;
-  line-height: 1.8;
+  font-size: 12px;
+  line-height: 1.9;
   color: var(--muted);
-  max-width: 950px;
+  max-width: 1100px;
 }
 .annual-method p {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .annual-method details {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 .annual-compare {
   display: flex;
@@ -1269,10 +1291,10 @@ footer {
     font-size: 23px;
   }
   .annual-main b {
-    font-size: 86px;
+    font-size: clamp(44px, 19cqw, 76px);
   }
   .annual-main strong {
-    font-size: 24px;
+    font-size: clamp(18px, 5cqw, 24px);
   }
   .annual-sub {
     display: grid;
@@ -1286,7 +1308,7 @@ footer {
     font-size: 34px;
   }
   .annual-method {
-    font-size: 9px;
+    font-size: 12px;
   }
   .annual-compare {
     display: block;
@@ -1547,8 +1569,6 @@ footer {
   .feed-open h3 { font-size: 19px; }
   .feed-heading h3 { font-size: 20px; }
   .feed-impact { padding: 12px; }
-  .annual-main b { font-size: clamp(48px, 23cqw, 125px); }
-  .annual-main strong { font-size: clamp(20px, 6cqw, 30px); }
 }
 .incident-gallery {
   display: grid;
