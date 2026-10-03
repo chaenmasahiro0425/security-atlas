@@ -19,6 +19,7 @@ import { filterIncidents } from "./search";
 import type { Incident } from "./types";
 import "./style.css";
 import { Home, Community, Logo } from "./Home";
+import { LegalFooter } from "./Legal";
 type Research = {
   headline: string;
   scope: string;
@@ -576,10 +577,7 @@ function App() {
           </>
         )}
         <Community />
-        <footer>
-          Security Atlas / 個人運営の公開情報データベース · データ確認
-          2026.10.03
-        </footer>
+        <LegalFooter />
       </main>
       <dialog
         className="detail-dialog"

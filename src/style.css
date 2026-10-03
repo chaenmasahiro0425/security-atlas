@@ -1618,3 +1618,43 @@ footer {
     gap: 10px;
   }
 }
+
+.contribute-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: #fff !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.contribute-nav:hover { background: #173dcc; }
+.site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 18px; margin-left: auto; }
+.site-footer button { padding: 5px 0; border: 0; background: transparent; color: var(--muted); font-size: 12px; cursor: pointer; }
+.site-footer button:hover { color: var(--blue); }
+.legal-dialog { width: min(760px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); padding: 0; border: 1px solid var(--line); border-radius: 18px; color: var(--ink); background: white; }
+.legal-dialog::backdrop { background: #15284c66; backdrop-filter: blur(4px); }
+.legal-dialog article { padding: 32px 38px; }
+.legal-dialog header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.legal-dialog h2 { margin: 0; font-size: 26px; }
+.legal-dialog header button { display: grid; place-items: center; background: var(--wash); color: var(--blue); border: 1px solid var(--line); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; flex-shrink: 0; }
+.legal-dialog section { margin-top: 28px; }
+.legal-dialog h3 { font-size: 17px; margin: 0 0 10px; }
+.legal-dialog p { font-size: 14px; line-height: 1.95; color: #435b7b; }
+.legal-dialog .atlas-cta { margin-top: 20px; font-size: 13px; }
+.legal-external a { color: var(--blue); }
+@media(max-width:650px) {
+  .contribute-nav { padding: 8px 10px; }
+  .site-footer { flex-direction: column; align-items: flex-start; }
+  .site-footer nav { margin-left: 0; gap: 14px; }
+  .legal-dialog article { padding: 24px 20px; }
+  .legal-dialog h2 { font-size: 21px; }
+}
+@media (min-width:651px) and (max-width:900px) {
+  .sidebar { flex-wrap: wrap; justify-content: flex-start; gap: 14px 18px; }
+  .sidebar .brand { flex-basis: 100%; margin-right: 0; }
+}

@@ -63,10 +63,10 @@ npm run dev
 npm test
 npm run build
 npx playwright install chromium
-npx playwright test tests/ui.spec.ts tests/experience.spec.ts --workers=1
+npx playwright test tests/ui.spec.ts tests/experience.spec.ts tests/legal.spec.ts --workers=2
 ```
 
-E2E実行には開発サーバーが必要です。検索、年度、ギャラリー、共有URL、JSON取得、全画面と前後移動、キーボード、320〜1440pxの画面幅、データ読込失敗、起票文を確認します。
+E2E実行には開発サーバーが必要です。検索、年度、ギャラリー、共有URL、JSON取得、全画面と前後移動、キーボード、320〜1440pxの画面幅、データ読込失敗、起票文、規約モーダルの再読込とキーボード操作を確認します。
 
 ## データの構成
 

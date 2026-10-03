@@ -59,7 +59,6 @@ export function Home({
           <a className="hero-stat-link" href="#annual-statistics">
             2025年、3,063万人分の情報が漏えい・紛失。集計範囲と出典を見る ↓
           </a>
-          <small>資料確認 2026.10.03 · 個人運営 / オープンな学び</small>
         </div>
         <div className="atlas-map">
           <svg className="japan" viewBox="0 0 390 450">
