@@ -1,0 +1,36 @@
+import {test,expect} from '@playwright/test';
+test('search, filter, detail, direct link and empty state',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:3182');
+ await expect(page.locator('article.incident')).toHaveCount(11);
+ await page.getByRole('textbox',{name:'事件を検索'}).fill('ＧｉｔＨｕｂ');
+ await expect(page.locator('article.incident')).toHaveCount(1);
+ await page.locator('.incident-link').click();
+ await expect(page.getByRole('dialog').filter({hasText:'事例の詳細'})).toBeVisible();
+ await page.getByRole('tab',{name:'技術的な詳細'}).click();
+ await expect(page.getByText('公開情報から読み取れること')).toBeVisible();
+ await page.reload();
+ await expect(page.locator('.detail-dialog')).toBeVisible();
+ await page.keyboard.press('Escape');
+ await expect(page.locator('.detail-dialog')).not.toBeVisible();
+ await page.getByRole('textbox',{name:'事件を検索'}).fill('存在しない企業XYZ');
+ await expect(page.getByText('条件に一致する事例がありません')).toBeVisible();
+ await page.getByRole('button',{name:'すべての事例を見る'}).click();
+ await expect(page.locator('article.incident')).toHaveCount(11);
+ await page.getByRole('radio',{name:'未公表'}).check();
+ await expect(page.locator('article.incident')).toHaveCount(6);
+ await page.getByRole('button',{name:'絞り込みをリセット'}).click();
+ await page.getByRole('combobox',{name:'並び順'}).selectOption('oldest');
+ await expect(page.locator('article.incident').first()).toContainText('アットホーム');
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'検索結果をJSONで取得'}).click();expect((await download).suggestedFilename()).toBe('security-atlas-incidents.json');
+ expect(errors).toEqual([]);
+});
+test('desktop and mobile layout',async({page})=>{
+ await page.setViewportSize({width:1440,height:1000});await page.goto('http://127.0.0.1:3182');await expect(page.locator('article.incident')).toHaveCount(11);await page.screenshot({path:'docs/desktop.png',fullPage:true});
+ await page.setViewportSize({width:390,height:844});await page.screenshot({path:'docs/mobile.png',fullPage:true});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+ await page.getByRole('button',{name:'絞り込み',exact:true}).click();
+ await page.getByRole('radio',{name:'公表',exact:true}).check();await expect(page.locator('article.incident')).toHaveCount(3);
+ await page.locator('.incident-link').first().click();await expect(page.locator('.detail-dialog')).toBeVisible();
+ await page.screenshot({path:'docs/detail-mobile.png'});
+});
