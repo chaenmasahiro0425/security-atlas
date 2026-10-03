@@ -49,3 +49,16 @@ Google Fontsは外部配信です。フォントが取得できない場合は�
 コードはMIT（LICENSE）。独自に編集したデータはCC BY 4.0（DATA-LICENSE.md）。リンク先の文章・図版の権利は各権利者に帰属します。
 
 調査の入口: [piyolog](https://piyolog.hatenadiary.jp/) / [Socket Blog](https://socket.dev/blog)
+
+## Vercel公開版
+
+GitHubリポジトリは非公開で管理し、サイトはVercelの個人用プロジェクト `security-atlas` に公開します。
+一覧表がトップページです。公表日で並び替え、企業・業種・原因の公表状況・漏えい状況で検索できます。
+`public/data/research.json` に追加調査を保存し、一次情報の事実、未公表事項、一般的な点検提案を分離しています。元の事件データは変更していません。
+各事件の対策タブと点検プロンプトページから、Claude Code用の読み取り専用レビュー指示をコピーできます。
+MCPは計画段階です。実際のサーバーや接続URLは未提供です。
+
+検証: `npm test`、`npm run build`、`npx playwright test`。
+
+公開URL: https://security-atlas.vercel.app/
+Vercel scope: `mchaen-digiriseais-projects`（chaen-personal）

@@ -1,37 +1,628 @@
-import React,{useEffect,useRef,useState} from 'react';
-import {createRoot} from 'react-dom/client';
-import {ShieldCheck,Search,ArrowUpRight,ArrowRight,SlidersHorizontal,Download,BookOpen,Code2,ExternalLink,X,Check,Database,FileCheck2,Clock3,RotateCcw,Link2,Layers,Menu} from 'lucide-react';
-import type {Incident} from './types';
-import {filterIncidents} from './search';
-import './style.css';
-const base=import.meta.env.BASE_URL;
-const params=new URLSearchParams(location.search);
-const fmt=(d:string)=>d.replaceAll('-','.');
-function App(){
- const [rows,setRows]=useState<Incident[]>([]),[error,setError]=useState(false),[q,setQ]=useState(params.get('q')||''),[industry,setIndustry]=useState(params.get('industry')||''),[cause,setCause]=useState(params.get('cause')||''),[leak,setLeak]=useState(params.get('leak')||''),[month,setMonth]=useState(params.get('month')||''),[sort,setSort]=useState(params.get('sort')||'newest'),[view,setView]=useState('list'),[selected,setSelected]=useState<string|null>(params.get('incident')),[tab,setTab]=useState('plain'),[info,setInfo]=useState<string|null>(null),[copied,setCopied]=useState(false),[mobileFilters,setMobileFilters]=useState(false);
- const dialog=useRef<HTMLDialogElement>(null),infoDialog=useRef<HTMLDialogElement>(null);
- useEffect(()=>{fetch(`${base}data/incidents.json`).then(r=>{if(!r.ok)throw Error();return r.json()}).then(setRows).catch(()=>setError(true))},[]);
- useEffect(()=>{const p=new URLSearchParams();Object.entries({q,industry,cause,leak,month,sort:sort==='newest'?'':sort,incident:selected||''}).forEach(([k,v])=>{if(v)p.set(k,v)});history.replaceState(null,'',`${location.pathname}${p.size?'?'+p:''}`)},[q,industry,cause,leak,month,sort,selected]);
- const current=rows.find(r=>r.id===selected);
- useEffect(()=>{if(current){dialog.current?.showModal();setTab('plain');document.title=`${current.organization}｜Security Atlas`}else{dialog.current?.close();document.title='Security Atlas | 日本のセキュリティ事件を、学びに変える。'}},[current]);
- useEffect(()=>{if(info)infoDialog.current?.showModal();else infoDialog.current?.close()},[info]);
- const reset=()=>{setQ('');setIndustry('');setCause('');setLeak('');setMonth('');setSort('newest')};
- const filtered=filterIncidents(rows,q,industry,cause,leak,month,sort),known=rows.filter(r=>r.causeStatus!=='未公表').length;
- const active=!!(q||industry||cause||leak||month);
- const share=async()=>{try{await navigator.clipboard.writeText(location.href);setCopied(true);setTimeout(()=>setCopied(false),2000)}catch{setCopied(false)}};
- function download(){const blob=new Blob([JSON.stringify(filtered,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='security-atlas-incidents.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
- return <><header className="header"><a className="brand" href={base} aria-label="Security Atlas ホーム"><span className="brand-icon"><ShieldCheck size={23}/></span><span>Security <b>Atlas</b><small>日本のセキュリティ事件データベース</small></span></a><nav><a href="#database" className="nav-active">事件を探す</a><button onClick={()=>setInfo('glossary')}>用語を知る</button><button onClick={()=>setInfo('about')}>このサイトについて</button></nav><span className="header-note"><span/>一次情報から、事実をたどる</span></header>
- <main><section className="hero"><div className="hero-copy"><div className="hero-label"><span className="dot"/> 公開情報で学ぶ、セキュリティ</div><h1>何が起きたか。<br/>なぜ起きたか。<br/><span>次に、どう備えるか。</span></h1><p>日本の不正アクセス・情報漏えいを、ひとつの地図に。<br className="desktop"/>事実と未確認を分け、ニュースの先にある学びを届けます。</p><a className="primary-button" href="#database">事件データベースを見る <ArrowRight size={18}/></a><span className="hero-meta">最終確認 2026.10.03 <i/> 2026年公表の主要事例</span></div><div className="atlas-graphic" aria-hidden="true"><div className="graphic-grid"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/><svg className="japan" viewBox="0 0 390 450"><g fill="#dce4fc" stroke="#fff" strokeWidth="3"><path d="m270 31 26 8 10 27 33 17 22-5 12 27-43 13-32-8-25 14-29-20 13-27-4-27z"/><path d="m259 145 24-20 16 12-3 38-17 32-2 32-20 25-21 5-18 20-18 5-24 19-27-2-24 21-44 7-11-14 30-20 27-3 19-23 21-4 5-20 27-9 13-29 20-21z"/><path d="m108 345 31-6 23 12-9 12-32 9-24-10z"/><path d="m68 346 26 14-9 26-6 38-23-5-17-22 6-31z"/><path d="m39 432 8 4-7 9-8-2z"/></g><g fill="#244ae0"><circle cx="228" cy="263" r="6"/><circle cx="199" cy="286" r="5"/><circle cx="271" cy="183" r="5"/><circle cx="76" cy="367" r="5"/><circle cx="305" cy="89" r="5"/></g><g fill="none" stroke="#244ae0" opacity=".25"><circle cx="228" cy="263" r="17"/><circle cx="228" cy="263" r="27"/></g></svg><div className="graphic-note note-top"><FileCheck2 size={16}/><span>根拠のある記録</span><b>一次情報</b></div><div className="graphic-note note-bottom"><Layers size={17}/><span>事件を、学びに。</span></div><span className="map-caption">全国の事例を、公開情報から整理<br/>地図はイメージです</span></div></section>
- <div className="stats"><div><Database/><span>収録事例<b>{rows.length}<small>件</small></b></span></div><div><FileCheck2/><span>原因の説明あり<b>{known}<small>件</small></b></span></div><div><Search/><span>原因の詳細は未公表<b>{rows.length-known}<small>件</small></b></span></div><div className="stats-caption"><ShieldCheck/><p>わからないことは、わからないまま。<br/><span>原因を推測で埋めないデータベースです。</span></p></div></div>
- <section className="database-section" id="database"><div className="section-top"><div><span className="section-label">Incident database</span><h2>事件を探す<span>知ることから、備える。</span></h2></div><button className="text-button" onClick={download}><Download size={16}/> 検索結果をJSONで取得</button></div><div className="search-box"><Search size={23}/><input aria-label="事件を検索" placeholder="企業名、攻撃手法、漏えい情報から検索…" value={q} onChange={e=>setQ(e.target.value)}/><kbd>検索</kbd>{q&&<button aria-label="検索語を消す" onClick={()=>setQ('')}><X size={17}/></button>}</div><div className="suggestions"><span>例えば</span>{['アバハウス','認証情報','免許証','GitHub'].map(s=><button key={s} onClick={()=>setQ(s)}>{s}</button>)}</div>
- <div className="db-layout"><aside className={mobileFilters?'filters expanded':'filters'}><div className="filter-title"><SlidersHorizontal size={17}/><b>絞り込み</b><button onClick={reset} aria-label="絞り込みをリセット"><RotateCcw size={15}/></button></div><label>業種<select value={industry} onChange={e=>setIndustry(e.target.value)}><option value="">すべての業種</option>{[...new Set(rows.map(r=>r.industry))].map(i=><option key={i}>{i}</option>)}</select></label><fieldset><legend>原因の公開状況</legend>{['','公表','一部公表','未公表'].map(c=><label className="radio" key={c}><input type="radio" name="cause" aria-label={c||'すべて'} checked={cause===c} onChange={()=>setCause(c)}/>{c||'すべて'}<small>{rows.filter(r=>!c||r.causeStatus===c).length}</small></label>)}</fieldset><label>漏えいの確認状況<select value={leak} onChange={e=>setLeak(e.target.value)}><option value="">すべて</option><option>漏えい確認</option><option>漏えいの可能性</option></select></label><label>公表月<select value={month} onChange={e=>setMonth(e.target.value)}><option value="">すべての期間</option>{[...new Set(rows.map(r=>r.disclosedAt.slice(0,7)))].sort().reverse().map(m=><option key={m} value={m}>{m.replace('-','年')}月</option>)}</select></label><div className="filter-guide"><BookOpen size={21}/><h3>初めての方へ</h3><p>「不正アクセス」と「情報漏えい」は同じではありません。</p><button onClick={()=>setInfo('glossary')}>言葉の違いを知る <ArrowUpRight size={15}/></button></div></aside>
- <div className="results"><div className="results-bar"><span aria-live="polite"><strong>{filtered.length}</strong> 件の事例 {active&&<button className="clear" onClick={reset}>条件をクリア</button>}</span><div><button className="mobile-filter" onClick={()=>setMobileFilters(!mobileFilters)}><Menu size={15}/>絞り込み</button><div className="view-toggle"><button aria-pressed={view==='list'} onClick={()=>setView('list')} aria-label="一覧表示"><Layers size={16}/></button><button aria-pressed={view==='timeline'} onClick={()=>setView('timeline')} aria-label="時系列表示"><Clock3 size={16}/></button></div><select aria-label="並び順" value={sort} onChange={e=>setSort(e.target.value)}><option value="newest">公表日の新しい順</option><option value="oldest">公表日の古い順</option><option value="updated">続報の新しい順</option></select></div></div>
- {error?<div className="empty"><h3>データを読み込めませんでした</h3><p>接続を確認してページを再読み込みしてください。</p><button onClick={()=>location.reload()}>再読み込み</button></div>:!rows.length?<div className="empty">事例を読み込んでいます…</div>:!filtered.length?<div className="empty"><Search size={32}/><h3>条件に一致する事例がありません</h3><p>別の企業名で検索するか、絞り込みを解除してください。</p><button onClick={reset}>すべての事例を見る</button></div>:<div className={view==='timeline'?'incident-list timeline-list':'incident-list'}>{filtered.map((r,i)=><article className="incident" key={r.id}><div className="incident-date"><span>公表日</span><time>{fmt(r.disclosedAt)}</time>{view==='timeline'&&<span className="timeline-point"/>}</div><div className="incident-main"><div className="incident-meta"><span className="industry">{r.industry}</span><span className={r.leakStatus==='漏えい確認'?'badge confirmed':'badge possible'}>{r.leakStatus==='漏えい確認'?<Check size={12}/>:<span className="badge-dot"/>}{r.leakStatus}</span>{i===0&&sort==='newest'&&!active&&<span className="new-label">最新の公表</span>}</div><button className="incident-link" onClick={()=>setSelected(r.id)}><span className="org">{r.organization}</span><h3>{r.title}</h3><ArrowUpRight className="row-arrow" size={20}/></button><p>{r.summary}</p><div className="incident-bottom"><span className={r.causeStatus==='未公表'?'cause unknown':'cause known'}><span/>{r.causeStatus==='未公表'?'原因の詳細は未公表':`原因：${r.category}`}</span><span className="source-count"><FileCheck2 size={13}/> 公式出典 {r.sources.length}件</span></div></div></article>)}</div>}
- <div className="coverage"><ShieldCheck size={16}/><p>2026年公表の主要事例を手動で確認した初期収録です。国内全事件を網羅した統計ではありません。<br/>件数は事件単位。続報を重複計上せず、人数・アカウント数・レコード数も合算しません。</p></div></div></div></section>
- <section className="principles"><div><ShieldCheck size={26}/><h3>事実と、推測を分ける</h3><p>原因の公表範囲と未確認事項を明示。企業への断定的な評価はしません。</p></div><div><BookOpen size={26}/><h3>やさしく、深く読める</h3><p>まず概要を。その先には、技術的な詳細と自分の環境での確認ポイントを。</p></div><div><Link2 size={26}/><h3>必ず、出典に戻れる</h3><p>公式発表にリンク。発生日・判明日・公表日を分け、続報を時系列で記録します。</p></div></section></main>
- <footer><a className="footer-brand" href={base}>Security Atlas</a><p>日本のセキュリティ事件を、学びに変える。</p><button onClick={()=>setInfo('about')}>編集方針・収録範囲</button><a href={`${base}data/incidents.json`} download>オープンデータ</a><span>2026 · 個人運営</span></footer>
- <dialog ref={dialog} className="detail-dialog" onCancel={()=>setSelected(null)} onClick={e=>{if(e.target===e.currentTarget)setSelected(null)}}>{current&&<><div className="dialog-top"><span><ShieldCheck size={17}/> 事例の詳細</span><div><button aria-label="事例のURLをコピー" onClick={share}>{copied?<Check size={18}/>:<Link2 size={18}/>}</button><button aria-label="詳細を閉じる" onClick={()=>setSelected(null)}><X size={21}/></button></div></div><div className="detail-content"><div className="incident-meta"><span className="industry">{current.industry}</span><span className="badge">{current.leakStatus}</span></div><p className="detail-org">{current.organization}</p><h2>{current.title}</h2><p className="detail-summary">{current.summary}</p><div className="detail-dates">{[['公表日',current.disclosedAt],['発生日',current.occurredAt],['判明日',current.detectedAt]].map(([k,v])=><div key={k}><small>{k}</small><b>{v||'未公表'}</b></div>)}</div><div className="detail-tabs" role="tablist"><button role="tab" aria-selected={tab==='plain'} onClick={()=>setTab('plain')}><BookOpen size={16}/>やさしく読む</button><button role="tab" aria-selected={tab==='technical'} onClick={()=>setTab('technical')}><Code2 size={17}/>技術的な詳細</button></div><section className="cause-panel"><span className="panel-label">原因の公開状況：{current.causeStatus}</span><h3>{current.causeStatus==='未公表'?'具体的な侵入方法は未公表':current.category}</h3><p>{current.cause}</p></section>{tab==='plain'?<><h3 className="detail-heading">どんな情報に影響があった？</h3><p className="impact">{current.impact}</p><div className="data-tags">{current.dataTypes.map(d=><span key={d}>{d}</span>)}</div><div className="lesson"><BookOpen size={20}/><div><h3>利用者への案内・確認ポイント</h3><p>{current.lesson}</p><small>公式案内の要約、または一般的な確認点です。</small></div></div></>:<><h3 className="detail-heading">公開情報から読み取れること</h3><p className="technical-text">{current.technical}</p><div className="technical-note"><Code2 size={19}/><p>AI攻撃、ゼロデイ、ライブラリの脆弱性、シークレット流出は、一次情報で明示されない限り原因として分類しません。</p></div></>}
- <h3 className="detail-heading">事件のタイムライン</h3><ol className="event-timeline">{current.timeline.map((t,i)=><li key={i}><time>{t.date}</time><span>{t.label}</span><a href={current.sources.find(s=>s.id===t.sourceId)?.url} target="_blank" rel="noreferrer" aria-label={`${t.label}の出典`}><ExternalLink size={14}/></a></li>)}</ol><h3 className="detail-heading">出典・確認情報</h3><div className="sources">{current.sources.map(s=><a href={s.url} key={s.id} target="_blank" rel="noreferrer"><FileCheck2 size={17}/><span>{s.title}<small>{s.kind} · 公表 {s.publishedAt}</small></span><ExternalLink size={15}/></a>)}</div><p className="verified">確認日：{current.verifiedAt} ／ 記載は確認した公開資料の時点の情報です。</p></div></>}</dialog>
- <dialog ref={infoDialog} className="info-dialog" onCancel={()=>setInfo(null)}><div className="dialog-top"><b>{info==='glossary'?'セキュリティの言葉を知る':'編集方針と収録範囲'}</b><button aria-label="説明を閉じる" onClick={()=>setInfo(null)}><X size={20}/></button></div><div className="info-content">{info==='glossary'?<>{[['不正アクセス','権限のない人がシステムや情報にアクセスすること。侵入があっても、情報が持ち出されたとは限りません。'],['漏えい確認／漏えいの可能性','「確認」は会社が取得・流出を確認したケース。「可能性」は取得や流出の範囲が確定していないケースです。'],['認証と認可','認証は「あなたは誰か」。認可は「その情報を見てよいか」。ログインできるだけで全情報を見られる設計は危険です。'],['脆弱性・CVE','脆弱性は悪用される可能性のある弱点。CVEは公に識別された脆弱性の番号です。推測で事件に割り当てません。'],['ランサムウェア','ファイルを使えなくして金銭を要求する攻撃に使われるプログラム。情報窃取を伴うケースもあります。'],['パスワードのハッシュ化','パスワードを計算で変換した値を保存すること。安全性は方式や設定にも依存し、流出しても安全とは一律に言えません。']].map(([t,d])=><section key={t}><h3>{t}</h3><p>{d}</p></section>)}</>:<><h3>一次情報を軸に、事件から学ぶ</h3><p>企業・組織の公式発表を優先し、独自の短い要約を記録します。piyologは調査の入口、Socketは技術記事と情報設計の参考です。</p><h3>初期収録の範囲</h3><p>2026年公表の国内主要事例を収録。全国全件を網羅する統計ではありません。収録件数を国内の発生総数や増減の根拠として使わないでください。</p><h3>分類の基準</h3><p>「公表」は直接原因の説明がある事例。「一部公表」は脆弱性や経路の概要のみ。「未公表」は具体的な侵入方法が示されていない事例です。原因の公表は全技術情報の開示を意味しません。</p><h3>更新と訂正</h3><p>定期更新は未設定です。新たな公式発表を確認してレビュー後に更新します。過去の出典とタイムラインを残し、未公表の原因を推測で埋めません。</p><h3>データの利用</h3><p>独自の要約データはCC BY 4.0、コードはMIT。出典元の資料の権利は各権利者に帰属します。</p><div className="sources"><a href="https://piyolog.hatenadiary.jp/" target="_blank" rel="noreferrer">piyolog <ExternalLink size={15}/></a><a href="https://socket.dev/blog" target="_blank" rel="noreferrer">Socket Blog <ExternalLink size={15}/></a></div></>}</div></dialog></>;
+import React, { useState, useEffect, useRef } from "react";
+import { createRoot } from "react-dom/client";
+import { Shield, Database, Code, Plug, X, Copy, Search } from "lucide-react";
+import { filterIncidents } from "./search";
+import type { Incident } from "./types";
+import "./style.css";
+type Research = {
+  headline: string;
+  scope: string;
+  flow: string[];
+  facts: { text: string; sourceId: string }[];
+  unknown: string[];
+  checks: { title: string; detail: string }[];
+  sources: Incident["sources"];
+  promptKey: string;
+};
+type Row = Incident & { research: Research };
+const params = new URLSearchParams(location.search);
+const topics: Record<string, string> = {
+  auth: "認証・権限・大量取得への対策",
+  secrets: "GitHub・秘密情報・トークンの管理",
+  nonprod: "テスト環境・個人情報の残置",
+  dependencies: "依存関係・脆弱性・更新管理",
+};
+function prompt(key: string, r?: Row) {
+  return `私が管理するリポジトリを読み取り専用でセキュリティレビューしてください。AGENTS.mdを最初に読み、${topics[key]}を重点的に確認してください。\n${
+    r
+      ? `参考事例: ${r.organization}\n確認された公開情報: ${r.research.headline}\n未確認: ${r.research.unknown.join("／")}\n点検観点:\n${r.research.checks.map((c) => c.title + ": " + c.detail).join("\n")}\n一次情報:\n${r.sources
+          .filter((s) => s.kind === "一次情報")
+          .map((s) => s.url)
+          .join("\n")}`
+      : ""
+  }\n参考事例の原因がこのコードにも存在すると決めつけないでください。実コードの根拠を確認し、重要度・file:line・成立条件・影響・修正案・検証方法を報告してください。仮説と未確認を明記してください。秘密情報の値を表示せず、秘密設定ファイルや秘密鍵を承認なく読まないでください。ファイル変更、外部サイトへの攻撃、外部データ変更、deployは実行しないでください。`;
 }
-createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);
+function App() {
+  const [rows, R] = useState<Row[]>([]),
+    [error, E] = useState(false),
+    [q, Q] = useState(params.get("q") || ""),
+    [cause, C] = useState(params.get("cause") || ""),
+    [industry, I] = useState(params.get("industry") || ""),
+    [leak, L] = useState(params.get("leak") || ""),
+    [sort, S] = useState(params.get("sort") || "newest"),
+    [view, V] = useState("テーブル"),
+    [section, N] = useState("db"),
+    [id, D] = useState(params.get("incident") || ""),
+    [tab, T] = useState("概要"),
+    [copied, B] = useState("");
+  const dialog = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    Promise.all([
+      fetch("./data/incidents.json").then((r) => r.json()),
+      fetch("./data/research.json").then((r) => r.json()),
+    ])
+      .then(([a, b]) =>
+        R(
+          a.map((r: Incident) => ({
+            ...r,
+            research: b[r.id],
+            sources: [...r.sources, ...b[r.id].sources],
+          })),
+        ),
+      )
+      .catch(() => E(true));
+  }, []);
+  const current = rows.find((r) => r.id === id);
+  useEffect(() => {
+    const p = new URLSearchParams();
+    Object.entries({ q, cause, industry, leak, sort, incident: id }).forEach(
+      ([k, v]) => {
+        if (v) p.set(k, v);
+      },
+    );
+    history.replaceState(null, "", "?" + p);
+  }, [q, cause, industry, leak, sort, id]);
+  useEffect(() => {
+    if (current && !dialog.current?.open) dialog.current?.showModal();
+    if (!current && dialog.current?.open) dialog.current.close();
+  }, [current]);
+  const visible = filterIncidents(
+    rows,
+    q,
+    industry,
+    cause,
+    leak,
+    "",
+    sort,
+  ) as Row[];
+  const reset = () => {
+    Q("");
+    C("");
+    I("");
+    L("");
+  };
+  const copy = async (t: string, key: string) => {
+    try {
+      await navigator.clipboard.writeText(t);
+      B(key);
+      setTimeout(() => B(""), 2000);
+    } catch {
+      B("コピーできません。本文を選択してください");
+    }
+  };
+  return (
+    <div className="workspace">
+      <aside className="sidebar">
+        <a className="brand" href="/">
+          <Shield />
+          Security Atlas
+        </a>
+        <small>PERSONAL WORKSPACE</small>
+        <button
+          className={section === "db" ? "active" : ""}
+          onClick={() => N("db")}
+        >
+          <Database size={17} />
+          事件データベース
+        </button>
+        <button
+          className={section === "prompts" ? "active" : ""}
+          onClick={() => N("prompts")}
+        >
+          <Code size={17} />
+          点検プロンプト
+        </button>
+        <button
+          className={section === "mcp" ? "active" : ""}
+          onClick={() => N("mcp")}
+        >
+          <Plug size={17} />
+          MCP <em>Coming soon</em>
+        </button>
+        <p className="sidebar-note">
+          日本のセキュリティ事件簿
+          <br />
+          公開情報から、次の備えへ。
+          <br />
+          <br />
+          確認日 2026.10.03
+          <br />
+          初期収録 11件 · 網羅性は未検証
+        </p>
+      </aside>
+      <main>
+        <header>
+          Security Atlas /{" "}
+          {section === "db"
+            ? "事件データベース"
+            : section === "prompts"
+              ? "点検プロンプト"
+              : "MCP"}
+        </header>
+        {section === "db" ? (
+          <>
+            <div className="page-title">
+              <Database size={35} />
+              <div>
+                <small>INCIDENT DATABASE</small>
+                <h1>セキュリティ事件データベース</h1>
+                <p>
+                  何が起きたか、どこまでわかったか。公開情報から自分の環境での備えにつなげる。
+                </p>
+              </div>
+            </div>
+            <div className="stats">
+              <span>
+                <b>{rows.length}</b>収録事例
+              </span>
+              <span>
+                <b>5</b>原因情報あり
+              </span>
+              <span>
+                <b>6</b>原因未公表
+              </span>
+              <span>
+                <b>一次＋二次</b>出典を併記
+              </span>
+            </div>
+            <div className="db-title">
+              <h2>日本のインシデント</h2>
+              <button
+                onClick={() => {
+                  const u = URL.createObjectURL(
+                    new Blob([JSON.stringify(visible, null, 2)], {
+                      type: "application/json",
+                    }),
+                  );
+                  const a = document.createElement("a");
+                  a.href = u;
+                  a.download = "security-atlas-incidents.json";
+                  a.click();
+                  URL.revokeObjectURL(u);
+                }}
+              >
+                JSONを取得
+              </button>
+            </div>
+            <div className="views">
+              {["テーブル", "時系列"].map((x) => (
+                <button
+                  className={view === x ? "selected" : ""}
+                  key={x}
+                  onClick={() => V(x)}
+                >
+                  {x}
+                </button>
+              ))}
+              <small>公表日を基準に表示</small>
+            </div>
+            <div className="toolbar">
+              <label>
+                <Search size={17} />
+                <input
+                  aria-label="事件を検索"
+                  placeholder="企業名、原因、GitHub、被害で検索…"
+                  value={q}
+                  onChange={(e) => Q(e.target.value)}
+                />
+              </label>
+              <select
+                aria-label="並び順"
+                value={sort}
+                onChange={(e) => S(e.target.value)}
+              >
+                <option value="newest">公表日：新しい順</option>
+                <option value="oldest">公表日：古い順</option>
+                <option value="updated">一次情報：更新順</option>
+              </select>
+            </div>
+            <div className="filters">
+              <select
+                aria-label="原因の公表状況"
+                value={cause}
+                onChange={(e) => C(e.target.value)}
+              >
+                <option value="">原因：すべて</option>
+                {["公表", "一部公表", "未公表"].map((x) => (
+                  <option key={x}>{x}</option>
+                ))}
+              </select>
+              <select
+                aria-label="業種"
+                value={industry}
+                onChange={(e) => I(e.target.value)}
+              >
+                <option value="">業種：すべて</option>
+                {[...new Set(rows.map((r) => r.industry))].map((x) => (
+                  <option key={x}>{x}</option>
+                ))}
+              </select>
+              <select
+                aria-label="漏えい状況"
+                value={leak}
+                onChange={(e) => L(e.target.value)}
+              >
+                <option value="">漏えい：すべて</option>
+                {[...new Set(rows.map((r) => r.leakStatus))].map((x) => (
+                  <option key={x}>{x}</option>
+                ))}
+              </select>
+              <button onClick={reset}>絞り込みをリセット</button>
+              <span>{visible.length}件</span>
+            </div>
+            {error ? (
+              <p role="alert">
+                データを読み込めませんでした。再読み込みしてください。
+              </p>
+            ) : view === "テーブル" ? (
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>企業・事件</th>
+                      <th>
+                        <button
+                          onClick={() =>
+                            S(sort === "oldest" ? "newest" : "oldest")
+                          }
+                        >
+                          公表日 {sort === "oldest" ? "↑" : "↓"}
+                        </button>
+                      </th>
+                      <th>業種</th>
+                      <th>原因 / 公表状況</th>
+                      <th>影響・規模</th>
+                      <th>漏えい</th>
+                      <th>出典</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {visible.map((r) => (
+                      <tr className="incident" key={r.id}>
+                        <td>
+                          <button
+                            className="incident-link"
+                            onClick={() => {
+                              D(r.id);
+                              T("概要");
+                            }}
+                          >
+                            <strong>{r.organization}</strong>
+                            <small>{r.title}</small>
+                          </button>
+                        </td>
+                        <td className="date">{r.disclosedAt}</td>
+                        <td>
+                          <span className="tag">{r.industry}</span>
+                        </td>
+                        <td>
+                          <span
+                            className={
+                              "badge " +
+                              (r.causeStatus === "未公表" ? "unknown" : "known")
+                            }
+                          >
+                            {r.causeStatus}
+                          </span>
+                          <small>{r.category}</small>
+                        </td>
+                        <td className="impact-cell">{r.impact}</td>
+                        <td>
+                          <span className="tag">{r.leakStatus}</span>
+                        </td>
+                        <td>{r.sources.length} ↗</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="timeline-list">
+                {visible.map((r) => (
+                  <article className="incident" key={r.id}>
+                    <time>{r.disclosedAt}</time>
+                    <button
+                      className="incident-link"
+                      onClick={() => {
+                        D(r.id);
+                        T("概要");
+                      }}
+                    >
+                      <strong>{r.organization}</strong>
+                      <small>{r.research.headline}</small>
+                    </button>
+                    <span className="badge">{r.causeStatus}</span>
+                  </article>
+                ))}
+              </div>
+            )}
+            {rows.length > 0 && !visible.length && (
+              <div className="empty">
+                <h3>条件に一致する事例がありません</h3>
+                <button onClick={reset}>すべての事例を見る</button>
+              </div>
+            )}
+            <p className="db-foot">
+              {visible.length} records ·
+              発生日と公表日は異なります。原因未公表は、安全性の評価を意味しません。
+            </p>
+            <details className="policy">
+              <summary>このデータベースの読み方・編集方針</summary>
+              <p>
+                一次情報は被害組織の公表、二次情報は報道・専門家の整理です。侵入経路、影響、対策を分け、未公表の原因を推測で補いません。一般的な点検提案は編集上の提案です。初期調査の11件を収録し、日本全体の発生傾向を示す統計ではありません。可能性と確認済みを区別し、件数を事件間で単純合算しません。
+              </p>
+              <p>
+                参考：<a href="https://piyolog.hatenadiary.jp/">piyolog</a> ·{" "}
+                <a href="https://socket.dev/blog">Socket Blog</a>
+                。転載せず、独自要約と出典リンクを掲載しています。
+              </p>
+            </details>
+          </>
+        ) : section === "prompts" ? (
+          <>
+            <div className="page-title">
+              <Code size={35} />
+              <div>
+                <small>FROM INCIDENTS TO ACTION</small>
+                <h1>自分のコードを、点検する。</h1>
+                <p>
+                  Claude Codeなどに貼り付けて使う、読み取り専用のレビュー指示。
+                </p>
+              </div>
+            </div>
+            <p className="notice">
+              事件の原因が自分の環境にも存在するとは限りません。実コードの根拠を確認するためのプロンプトです。
+            </p>
+            <div className="prompt-grid">
+              {Object.entries(topics).map(([key, title]) => (
+                <article key={key}>
+                  <Code />
+                  <h2>{title}</h2>
+                  <details>
+                    <summary>プロンプトを読む</summary>
+                    <pre>{prompt(key)}</pre>
+                  </details>
+                  <button
+                    className="primary"
+                    onClick={() => copy(prompt(key), key)}
+                  >
+                    <Copy size={16} />
+                    {copied === key ? "コピーしました" : "プロンプトをコピー"}
+                  </button>
+                </article>
+              ))}
+            </div>
+            <p className="reference">
+              参考：
+              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html">
+                OWASP Authorization
+              </a>{" "}
+              ·{" "}
+              <a href="https://docs.github.com/en/code-security/concepts/secret-security/secret-scanning">
+                GitHub Secret scanning
+              </a>{" "}
+              ·{" "}
+              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Vulnerable_Dependency_Management_Cheat_Sheet.html">
+                OWASP Dependency Management
+              </a>
+            </p>
+          </>
+        ) : (
+          <>
+            <div className="page-title">
+              <Plug size={35} />
+              <div>
+                <small>COMING SOON</small>
+                <h1>事件の知見を、開発ツールへ。</h1>
+                <p>
+                  MCP経由での検索・出典参照・点検観点の取得を計画しています。
+                </p>
+              </div>
+            </div>
+            <div className="mcp-card">
+              <span className="badge known">Coming soon · 開発予定</span>
+              <h2>検索 → 根拠を確認 → 自分の環境を点検</h2>
+              <div className="flow">
+                {[
+                  "事件・原因を検索",
+                  "一次情報と未公表事項を取得",
+                  "点検プロンプトに活用",
+                ].map((x, i) => (
+                  <div key={x}>
+                    <b>0{i + 1}</b>
+                    <p>{x}</p>
+                  </div>
+                ))}
+              </div>
+              <p>
+                MCPサーバー、接続URL、インストール設定は現在未提供です。提供時に掲載します。
+              </p>
+              <button disabled>接続設定は準備中</button>
+            </div>
+          </>
+        )}
+        <footer>
+          Security Atlas / 個人運営の公開情報データベース · データ確認
+          2026.10.03
+        </footer>
+      </main>
+      <dialog
+        className="detail-dialog"
+        ref={dialog}
+        onCancel={() => D("")}
+        onClose={() => D("")}
+      >
+        {current && (
+          <>
+            <div className="detail-head">
+              <small>INCIDENT / {current.disclosedAt}</small>
+              <button aria-label="詳細を閉じる" onClick={() => D("")}>
+                <X />
+              </button>
+            </div>
+            <h2>{current.organization}</h2>
+            <p>{current.title}</p>
+            <div className="detail-meta">
+              <span className="badge known">{current.causeStatus}</span>
+              <span className="tag">{current.leakStatus}</span>
+              <button onClick={() => copy(location.href, "link")}>
+                {copied === "link" ? "コピーしました" : "詳細リンクをコピー"}
+              </button>
+            </div>
+            <div className="tabs" role="tablist">
+              {["概要", "技術的な詳細", "対策・プロンプト"].map((x) => (
+                <button
+                  role="tab"
+                  aria-selected={tab === x}
+                  key={x}
+                  onClick={() => T(x)}
+                >
+                  {x}
+                </button>
+              ))}
+            </div>
+            <div className="detail-body">
+              {tab === "概要" ? (
+                <>
+                  <small>何が起きた？</small>
+                  <h3>{current.research.headline}</h3>
+                  <p>{current.summary}</p>
+                  <div className="flow">
+                    {current.research.flow.map((x, i) => (
+                      <div key={x}>
+                        <b>0{i + 1}</b>
+                        <p>{x}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="scope">{current.research.scope}</p>
+                  <h3>わかったこと</h3>
+                  {current.research.facts.map((f, i) => (
+                    <p key={i}>
+                      ✓ {f.text}{" "}
+                      <a
+                        href={
+                          current.sources.find((s) => s.id === f.sourceId)?.url
+                        }
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        一次情報 ↗
+                      </a>
+                    </p>
+                  ))}
+                  <h3>被害・影響</h3>
+                  <p>{current.impact}</p>
+                  <p>{current.dataTypes.join(" / ")}</p>
+                  <h3>経緯</h3>
+                  {current.timeline.map((x, i) => (
+                    <p className="event" key={i}>
+                      <time>{x.date}</time>
+                      {x.label}
+                    </p>
+                  ))}
+                </>
+              ) : tab === "技術的な詳細" ? (
+                <>
+                  <h3>公開情報から読み取れること</h3>
+                  <p>{current.technical}</p>
+                  <h3>公表された原因</h3>
+                  <p>{current.cause}</p>
+                  <p className="scope">{current.research.scope}</p>
+                </>
+              ) : (
+                <>
+                  <h3>自分の環境で点検すること</h3>
+                  <p className="scope">
+                    編集部による一般的な点検提案です。事件の未公表原因を断定するものではありません。
+                  </p>
+                  {current.research.checks.map((c) => (
+                    <div className="check-card" key={c.title}>
+                      <Shield size={18} />
+                      <div>
+                        <b>{c.title}</b>
+                        <p>{c.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <h3>Claude Code用 点検プロンプト</h3>
+                  <button
+                    className="primary"
+                    onClick={() =>
+                      copy(
+                        prompt(current.research.promptKey, current),
+                        "incident",
+                      )
+                    }
+                  >
+                    <Copy size={16} />
+                    {copied === "incident"
+                      ? "コピーしました"
+                      : "プロンプトをコピー"}
+                  </button>
+                  <pre>{prompt(current.research.promptKey, current)}</pre>
+                </>
+              )}
+              {tab !== "対策・プロンプト" && (
+                <div className="unknown-box">
+                  <h3>まだわからないこと</h3>
+                  <ul>
+                    {current.research.unknown.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <div className="sources">
+                <h3>出典・確認できる範囲</h3>
+                {["一次情報", "二次情報"].map((kind) => (
+                  <section key={kind}>
+                    <h4>
+                      {kind}{" "}
+                      <small>
+                        {kind === "一次情報"
+                          ? "被害組織の公表"
+                          : "報道・専門家の整理"}
+                      </small>
+                    </h4>
+                    {current.sources
+                      .filter((s) => s.kind === kind)
+                      .map((s, i) => (
+                        <a
+                          href={s.url}
+                          key={i}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {s.title}
+                          <small>
+                            {s.publishedAt} · {new URL(s.url).hostname}
+                          </small>
+                        </a>
+                      ))}
+                  </section>
+                ))}
+                <small>確認日 2026.10.03</small>
+              </div>
+            </div>
+          </>
+        )}
+      </dialog>
+    </div>
+  );
+}
+createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

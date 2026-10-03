@@ -7,3 +7,5 @@ playwright-report/
 .DS_Store
 
 *.tsbuildinfo
+.vercel
+.env*
