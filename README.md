@@ -62,3 +62,8 @@ MCPは計画段階です。実際のサーバーや接続URLは未提供です�
 
 公開URL: https://security-atlas.vercel.app/
 Vercel scope: `mchaen-digiriseais-projects`（chaen-personal）
+
+## トップページ・共同編集
+地図を使ったトップページの下に検索DBを配置しています。2026-10-03の追加調査10件は `public/data/additions-20261003.json` に保存し、既存11件と合わせて21件を表示します。直近30日と月別の件数は収録資料の公表日を基準に計算します。国内の総発生統計ではありません。
+
+情報追加・訂正・お問い合わせは画面下のフォームからGitHub Issueの下書きを開きます。GitHubログインと利用者による起票が必要です。自動更新・自動反映は未実装です。MCP連携は計画段階です。編集方針は CONTRIBUTING.md、比較した3方向は docs/design/directions.md を参照してください。

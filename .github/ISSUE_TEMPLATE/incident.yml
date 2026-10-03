@@ -1,0 +1,28 @@
+name: 事件の追加リクエスト
+description: 一次情報のURLを添えて、収録したい事件を提案する
+title: '[追加] '
+body:
+  - type: input
+    id: organization
+    attributes:
+      label: 組織・サービス名
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: 一次情報のURL
+      description: 被害組織の公表や公的機関の資料。秘密情報や個人情報は書かないでください。
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: 追加したい内容・確認できた事実
+  - type: checkboxes
+    id: public
+    attributes:
+      label: 公開内容の確認
+      options:
+        - label: 公開情報のみを記載し、このIssueが公開されることを確認しました
+          required: true

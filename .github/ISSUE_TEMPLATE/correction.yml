@@ -1,0 +1,19 @@
+name: 訂正・続報・お問い合わせ
+description: 出典とともに訂正や続報、サイトの改善を提案する
+title: '[訂正・続報] '
+body:
+  - type: input
+    id: target
+    attributes:
+      label: 対象の事件・ページ
+  - type: input
+    id: source
+    attributes:
+      label: 根拠URL
+  - type: textarea
+    id: detail
+    attributes:
+      label: 内容
+      description: 公開されるため、秘密情報や個人情報を記載しないでください。
+    validations:
+      required: true

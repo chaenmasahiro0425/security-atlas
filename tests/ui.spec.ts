@@ -7,7 +7,7 @@ test("database search, dates, sources, prompts and MCP", async ({
   page.on("pageerror", (e) => errors.push(e.message));
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("http://127.0.0.1:3182");
-  await expect(page.locator("tr.incident")).toHaveCount(11);
+  await expect(page.locator("tr.incident")).toHaveCount(21);
   await page.getByRole("combobox", { name: "並び順" }).selectOption("oldest");
   await expect(page.locator("tr.incident").first()).toContainText(
     "アットホーム",
@@ -38,10 +38,10 @@ test("database search, dates, sources, prompts and MCP", async ({
   await page
     .getByRole("combobox", { name: "原因の公表状況" })
     .selectOption("未公表");
-  await expect(page.locator("tr.incident")).toHaveCount(6);
+  await expect(page.locator("tr.incident")).toHaveCount(11);
   await page.getByRole("button", { name: "絞り込みをリセット" }).click();
   await page.getByRole("button", { name: "時系列", exact: true }).click();
-  await expect(page.locator("article.incident")).toHaveCount(11);
+  await expect(page.locator("article.incident")).toHaveCount(21);
   await page
     .getByRole("button", { name: "点検プロンプト", exact: true })
     .click();
@@ -55,7 +55,7 @@ test("database search, dates, sources, prompts and MCP", async ({
 test("desktop and mobile layout", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("http://127.0.0.1:3182");
-  await expect(page.locator("tr.incident")).toHaveCount(11);
+  await expect(page.locator("tr.incident")).toHaveCount(21);
   await page.screenshot({ path: "docs/desktop.png", fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
@@ -72,4 +72,17 @@ test("desktop and mobile layout", async ({ page }) => {
       .evaluate((el) => el.scrollWidth <= el.clientWidth),
   ).toBe(true);
   await page.screenshot({ path: "docs/detail-mobile.png" });
+});
+test('landing precedes database and contributions open a reviewable GitHub draft',async({page})=>{
+ await page.goto('http://127.0.0.1:3182');
+ await expect(page.locator('tr.incident')).toHaveCount(21);
+ await expect(page.locator('.atlas-hero h1')).toContainText('次に、どう備えるか');
+ const positions=await page.evaluate(()=>[document.querySelector('.atlas-hero')!.getBoundingClientRect().top,document.querySelector('#database')!.getBoundingClientRect().top]);
+ expect(positions[0]).toBeLessThan(positions[1]);
+ await page.locator('.commons input').nth(0).fill('テスト組織');
+ await page.locator('.commons input').nth(1).fill('https://example.com/notice');
+ await page.locator('.commons textarea').first().fill('公開資料の追加をお願いします');
+ await page.locator('.consent input').check();
+ await page.getByText('起票文を確認・コピーする').click();
+ await expect(page.getByRole('textbox',{name:'起票文'})).toHaveValue(/公開資料/);
 });

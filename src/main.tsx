@@ -4,6 +4,7 @@ import { Shield, Database, Code, Plug, X, Copy, Search } from "lucide-react";
 import { filterIncidents } from "./search";
 import type { Incident } from "./types";
 import "./style.css";
+import { Home, Community, Logo } from "./Home";
 type Research = {
   headline: string;
   scope: string;
@@ -14,7 +15,7 @@ type Research = {
   sources: Incident["sources"];
   promptKey: string;
 };
-type Row = Incident & { research: Research };
+export type Row = Incident & { research: Research };
 const params = new URLSearchParams(location.search);
 const topics: Record<string, string> = {
   auth: "認証・権限・大量取得への対策",
@@ -50,14 +51,15 @@ function App() {
     Promise.all([
       fetch("./data/incidents.json").then((r) => r.json()),
       fetch("./data/research.json").then((r) => r.json()),
+      fetch("./data/additions-20261003.json").then((r) => r.json()),
     ])
-      .then(([a, b]) =>
+      .then(([a, b, c]) =>
         R(
-          a.map((r: Incident) => ({
+          [...a.map((r: Incident) => ({
             ...r,
             research: b[r.id],
             sources: [...r.sources, ...b[r.id].sources],
-          })),
+          })), ...c],
         ),
       )
       .catch(() => E(true));
@@ -110,7 +112,7 @@ function App() {
         <small>PERSONAL WORKSPACE</small>
         <button
           className={section === "db" ? "active" : ""}
-          onClick={() => N("db")}
+          onClick={() => { N("db"); setTimeout(() => document.getElementById("database")?.scrollIntoView(), 0); }}
         >
           <Database size={17} />
           事件データベース
@@ -129,6 +131,7 @@ function App() {
           <Plug size={17} />
           MCP <em>Coming soon</em>
         </button>
+        <a className="contribute-nav" href="#contribute">情報を追加・訂正</a>
         <p className="sidebar-note">
           日本のセキュリティ事件簿
           <br />
@@ -137,7 +140,7 @@ function App() {
           <br />
           確認日 2026.10.03
           <br />
-          初期収録 11件 · 網羅性は未検証
+          公開情報を調査 · 網羅性は未検証
         </p>
       </aside>
       <main>
@@ -151,11 +154,12 @@ function App() {
         </header>
         {section === "db" ? (
           <>
-            <div className="page-title">
+            <Home rows={rows} open={(id) => { D(id); T("概要"); }} />
+            <div className="page-title" id="database">
               <Database size={35} />
               <div>
                 <small>INCIDENT DATABASE</small>
-                <h1>セキュリティ事件データベース</h1>
+                <h2>セキュリティ事件データベース</h2>
                 <p>
                   何が起きたか、どこまでわかったか。公開情報から自分の環境での備えにつなげる。
                 </p>
@@ -166,10 +170,10 @@ function App() {
                 <b>{rows.length}</b>収録事例
               </span>
               <span>
-                <b>5</b>原因情報あり
+                <b>{rows.filter(r => r.causeStatus !== "未公表").length}</b>原因情報あり
               </span>
               <span>
-                <b>6</b>原因未公表
+                <b>{rows.filter(r => r.causeStatus === "未公表").length}</b>原因未公表
               </span>
               <span>
                 <b>一次＋二次</b>出典を併記
@@ -297,7 +301,7 @@ function App() {
                               T("概要");
                             }}
                           >
-                            <strong>{r.organization}</strong>
+                            <strong><Logo name={r.organization} />{r.organization}</strong>
                             <small>{r.title}</small>
                           </button>
                         </td>
@@ -338,7 +342,7 @@ function App() {
                         T("概要");
                       }}
                     >
-                      <strong>{r.organization}</strong>
+                      <strong><Logo name={r.organization} />{r.organization}</strong>
                       <small>{r.research.headline}</small>
                     </button>
                     <span className="badge">{r.causeStatus}</span>
@@ -359,7 +363,7 @@ function App() {
             <details className="policy">
               <summary>このデータベースの読み方・編集方針</summary>
               <p>
-                一次情報は被害組織の公表、二次情報は報道・専門家の整理です。侵入経路、影響、対策を分け、未公表の原因を推測で補いません。一般的な点検提案は編集上の提案です。初期調査の11件を収録し、日本全体の発生傾向を示す統計ではありません。可能性と確認済みを区別し、件数を事件間で単純合算しません。
+                一次情報は被害組織の公表、二次情報は報道・専門家の整理です。侵入経路、影響、対策を分け、未公表の原因を推測で補いません。一般的な点検提案は編集上の提案です。収録事例を順次追加し、日本全体の発生傾向を示す統計ではありません。可能性と確認済みを区別し、件数を事件間で単純合算しません。
               </p>
               <p>
                 参考：<a href="https://piyolog.hatenadiary.jp/">piyolog</a> ·{" "}
@@ -451,6 +455,7 @@ function App() {
             </div>
           </>
         )}
+        <Community />
         <footer>
           Security Atlas / 個人運営の公開情報データベース · データ確認
           2026.10.03
@@ -470,7 +475,7 @@ function App() {
                 <X />
               </button>
             </div>
-            <h2>{current.organization}</h2>
+            <h2><Logo name={current.organization} />{current.organization}</h2>
             <p>{current.title}</p>
             <div className="detail-meta">
               <span className="badge known">{current.causeStatus}</span>
