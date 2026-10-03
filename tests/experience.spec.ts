@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-const base = "http://127.0.0.1:3182";
+const base = process.env.ATLAS_BASE || "http://127.0.0.1:3182";
 test("gallery filters, URL persistence and keyboard detail navigation", async ({
   page,
 }) => {

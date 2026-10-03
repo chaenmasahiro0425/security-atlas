@@ -300,7 +300,7 @@ em {
 }
 .annual-impact {
   display: grid;
-  grid-template-columns: 1.1fr 1.35fr 0.65fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.35fr) minmax(0, 0.65fr);
   gap: 30px;
   padding: 45px 0 30px;
   border-top: 2px solid var(--blue);
@@ -331,7 +331,7 @@ em {
 .annual-main b {
   font-size: clamp(64px, 8.3vw, 132px);
   font-weight: 800;
-  letter-spacing: -0.08em;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
 }
 .annual-main strong {
@@ -342,6 +342,9 @@ em {
 .annual-main small {
   font-size: 10px;
 }
+.annual-main { min-width: 0; container-type: inline-size; }
+.annual-main b { font-size: clamp(48px, 23cqw, 125px); white-space: nowrap; }
+.annual-main strong { font-size: clamp(20px, 6cqw, 30px); white-space: nowrap; padding-top: 16px; }
 .annual-sub > div + div {
   border-top: 1px solid var(--line);
   padding-top: 12px;
@@ -1509,6 +1512,44 @@ footer {
   font-size: 13px;
   color: var(--muted);
 }
+.incident-feed { max-width: 780px; margin: 28px auto 0; }
+.feed-heading { padding: 10px 0 24px; }
+.feed-heading h3 { font-size: 23px; margin: 10px 0; }
+.feed-heading p { color: var(--muted); font-size: 13px; margin: 0; }
+.feed-card { padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: white; margin-bottom: 18px; }
+.feed-identity { display: flex; gap: 12px; align-items: center; }
+.feed-identity .company-logo { width: 44px; height: 44px; flex-shrink: 0; }
+.feed-identity > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.feed-identity strong { font-size: 15px; overflow-wrap: anywhere; }
+.feed-identity span, .feed-identity time { font-size: 11px; color: var(--muted); }
+.feed-identity time { margin-left: auto; white-space: nowrap; }
+.feed-open { display: block; width: 100%; text-align: left; color: var(--ink); padding: 0; margin: 18px 0; }
+.feed-open h3 { font-size: 21px; line-height: 1.6; margin: 0 0 10px; }
+.feed-open p { font-size: 14px; line-height: 1.9; margin: 0 0 18px; color: var(--muted); }
+.feed-open:hover h3 { color: var(--blue); }
+.feed-impact { padding: 15px 18px; background: #f5f7ff; border-left: 3px solid var(--blue); border-radius: 0 6px 6px 0; }
+.feed-impact > span { display: block; font-size: 10px; color: var(--muted); margin-bottom: 6px; }
+.feed-impact strong { font-size: 14px; line-height: 1.7; }
+.feed-read { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--blue); margin-top: 18px; }
+.feed-status { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0; }
+.feed-source { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); }
+.feed-source:hover { background: #f5f7ff; border-color: var(--blue); }
+.feed-source div { min-width: 0; }
+.feed-source span { font-size: 10px; display: block; color: var(--muted); margin-bottom: 6px; }
+.feed-source strong { font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.feed-source svg { flex-shrink: 0; color: var(--blue); }
+@media (max-width: 700px) {
+  .views { gap: 22px; }
+  .feed-card { padding: 20px 16px; }
+  .feed-identity { flex-wrap: wrap; gap: 10px; }
+  .feed-identity > div { flex: 1; }
+  .feed-identity time { flex-basis: 100%; margin-left: 54px; }
+  .feed-open h3 { font-size: 19px; }
+  .feed-heading h3 { font-size: 20px; }
+  .feed-impact { padding: 12px; }
+  .annual-main b { font-size: clamp(48px, 23cqw, 125px); }
+  .annual-main strong { font-size: clamp(20px, 6cqw, 30px); }
+}
 .incident-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1617,4 +1658,44 @@ footer {
   .sidebar {
     gap: 10px;
   }
+}
+
+.contribute-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: #fff !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.contribute-nav:hover { background: #173dcc; }
+.site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 18px; margin-left: auto; }
+.site-footer button { padding: 5px 0; border: 0; background: transparent; color: var(--muted); font-size: 12px; cursor: pointer; }
+.site-footer button:hover { color: var(--blue); }
+.legal-dialog { width: min(760px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); padding: 0; border: 1px solid var(--line); border-radius: 18px; color: var(--ink); background: white; }
+.legal-dialog::backdrop { background: #15284c66; backdrop-filter: blur(4px); }
+.legal-dialog article { padding: 32px 38px; }
+.legal-dialog header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.legal-dialog h2 { margin: 0; font-size: 26px; }
+.legal-dialog header button { display: grid; place-items: center; background: var(--wash); color: var(--blue); border: 1px solid var(--line); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; flex-shrink: 0; }
+.legal-dialog section { margin-top: 28px; }
+.legal-dialog h3 { font-size: 17px; margin: 0 0 10px; }
+.legal-dialog p { font-size: 14px; line-height: 1.95; color: #435b7b; }
+.legal-dialog .atlas-cta { margin-top: 20px; font-size: 13px; }
+.legal-external a { color: var(--blue); }
+@media(max-width:650px) {
+  .contribute-nav { padding: 8px 10px; }
+  .site-footer { flex-direction: column; align-items: flex-start; }
+  .site-footer nav { margin-left: 0; gap: 14px; }
+  .legal-dialog article { padding: 24px 20px; }
+  .legal-dialog h2 { font-size: 21px; }
+}
+@media (min-width:651px) and (max-width:900px) {
+  .sidebar { flex-wrap: wrap; justify-content: flex-start; gap: 14px 18px; }
+  .sidebar .brand { flex-basis: 100%; margin-right: 0; }
 }

@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+const base = process.env.ATLAS_BASE || "http://127.0.0.1:3182";
 test("database search, dates, sources, prompts and MCP", async ({
   page,
   context,
@@ -6,7 +7,7 @@ test("database search, dates, sources, prompts and MCP", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
-  await page.goto("http://127.0.0.1:3182");
+  await page.goto(base);
   await expect(page.locator("tr.incident")).toHaveCount(30);
   await page.getByRole("combobox", { name: "並び順" }).selectOption("oldest");
   await expect(page.locator("tr.incident").first()).toContainText("イセトー");
@@ -52,16 +53,16 @@ test("database search, dates, sources, prompts and MCP", async ({
 });
 test("desktop and mobile layout", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto("http://127.0.0.1:3182");
+  await page.goto(base);
   await expect(page.locator("tr.incident")).toHaveCount(30);
-  await page.screenshot({ path: "docs/desktop.png", fullPage: true });
+  await page.screenshot({ path: `${process.env.ATLAS_SCREENSHOTS || "docs"}/desktop.png`, fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
-  await page.screenshot({ path: "docs/mobile.png", fullPage: true });
+  await page.screenshot({ path: `${process.env.ATLAS_SCREENSHOTS || "docs"}/mobile.png`, fullPage: true });
   await page.locator(".incident-link").first().click();
   await expect(page.getByRole("dialog")).toBeVisible();
   expect(
@@ -69,12 +70,12 @@ test("desktop and mobile layout", async ({ page }) => {
       .getByRole("dialog")
       .evaluate((el) => el.scrollWidth <= el.clientWidth),
   ).toBe(true);
-  await page.screenshot({ path: "docs/detail-mobile.png" });
+  await page.screenshot({ path: `${process.env.ATLAS_SCREENSHOTS || "docs"}/detail-mobile.png` });
 });
 test("landing precedes database and contributions open a reviewable GitHub draft", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:3182");
+  await page.goto(base);
   await expect(page.locator("tr.incident")).toHaveCount(30);
   await expect(page.locator(".atlas-hero h1")).toContainText("情報漏洩まとめ");
   const positions = await page.evaluate(() => [
@@ -100,7 +101,7 @@ test("landing precedes database and contributions open a reviewable GitHub draft
 test("year filters, full screen pager, official logos and annual scope", async ({
   page,
 }) => {
-  await page.goto("http://127.0.0.1:3182");
+  await page.goto(base);
   await expect(page.locator("tr.incident")).toHaveCount(30);
   await page.getByRole("combobox", { name: "公表年" }).selectOption("2024");
   await expect(page.locator("tr.incident")).toHaveCount(4);
