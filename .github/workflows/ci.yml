@@ -1,18 +1,33 @@
 name: Validate
 on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm audit --audit-level=moderate
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run dev > /tmp/security-atlas-vite.log 2>&1 &
-      - run: npx wait-on http://127.0.0.1:3182
+      - name: Wait for local server
+        run: |
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:3182 > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
       - run: npx playwright test tests/ui.spec.ts tests/experience.spec.ts tests/legal.spec.ts tests/feed.spec.ts --workers=1
