@@ -1,0 +1,551 @@
+[
+  {
+    "id": "abahouse-2026",
+    "organization": "アバハウスインターナショナル",
+    "industry": "小売・EC",
+    "disclosedAt": "2026-10-02",
+    "occurredAt": "2026-09-27〜09-28（推定）",
+    "detectedAt": "2026-09-28",
+    "title": "会員・注文情報のDBに不正アクセス",
+    "summary": "注文内容と一致する偽の返金メールで発覚。退会済みを含む顧客が対象となる可能性があります。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "一部公表",
+    "category": "不正ログイン・システム不備",
+    "cause": "不正ログインを起点にシステムの不備が悪用され、不正プログラムが実行されたと会社は説明。具体的な脆弱性や認証情報の入手経路は未公表。",
+    "impact": "人数未公表／全顧客が対象となる可能性",
+    "dataTypes": [
+      "氏名・住所",
+      "電話番号・メール",
+      "会員情報",
+      "注文情報"
+    ],
+    "technical": "社内システム → 不正プログラム → 会員・受注DBの経路。CVEやログイン突破手法は未公表。カード番号とセキュリティコードは自社システムに保存していないとの説明です。",
+    "lesson": "注文内容が正しくてもメールを信用せず、公式サイトから注文状況を確認してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "アバハウスインターナショナル 公式発表",
+        "url": "https://abahouse.co.jp/news/2005/",
+        "publishedAt": "2026-10-02",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-28",
+        "label": "不審な返金メールの相談で調査開始",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-10-02",
+        "label": "公式発表・対象者へ通知",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "nippon-app-second-2026",
+    "organization": "ニッポンレンタカー",
+    "industry": "交通・レンタカー",
+    "disclosedAt": "2026-10-01",
+    "occurredAt": "2026-09-19〜09-21",
+    "detectedAt": "2026-09-29",
+    "title": "別手法の不正アクセス、55名に影響",
+    "summary": "先に公表した事件を調べる過程で別の攻撃が判明。9月26日公表の事件とは分けて記録しています。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "最初の事件とは異なる手法との説明のみ。具体的な侵入方法は未公表。",
+    "impact": "55名（閲覧されたおそれ）",
+    "dataTypes": [
+      "氏名・連絡先",
+      "ログインID",
+      "予約・利用履歴",
+      "免許証情報",
+      "カード番号下4桁"
+    ],
+    "technical": "会員情報ページへの不正アクセスを確認。免許証情報・カード番号下4桁・名義人名は登録者のみ対象。認証突破か認可不備かは判別できません。",
+    "lesson": "対象通知を公式窓口で確認し、不審な連絡から個人情報を入力しないでください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "ニッポンレンタカー 公式発表",
+        "url": "https://www.nipponrentacar.co.jp/info/202610_2.html",
+        "publishedAt": "2026-10-01",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-19",
+        "label": "別手法の攻撃開始",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-09-29",
+        "label": "別事件を確認",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-10-01",
+        "label": "55名への影響を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "nippon-app-first-2026",
+    "organization": "ニッポンレンタカー",
+    "industry": "交通・レンタカー",
+    "disclosedAt": "2026-09-26",
+    "occurredAt": null,
+    "detectedAt": null,
+    "title": "アプリ会員41名の情報が閲覧されたおそれ",
+    "summary": "会社は対象者に個別通知し、パスワードの再設定を依頼しました。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "原因究明中との説明。具体的な侵入方法は未公表。",
+    "impact": "41名（閲覧されたおそれ）",
+    "dataTypes": [
+      "氏名・連絡先",
+      "ログインID",
+      "予約・利用履歴",
+      "免許証情報",
+      "カード番号下4桁"
+    ],
+    "technical": "パスワード再設定の依頼だけで、パスワード流出やリスト型攻撃が原因とは断定できません。",
+    "lesson": "対象通知が届いた場合は、公式アプリや公式窓口からパスワードを再設定してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "ニッポンレンタカー 公式発表",
+        "url": "https://www.nipponrentacar.co.jp/info/202609.html",
+        "publishedAt": "2026-09-26",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-26",
+        "label": "41名への影響を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "timescar-2026",
+    "organization": "タイムズカー",
+    "industry": "交通・レンタカー",
+    "disclosedAt": "2026-09-25",
+    "occurredAt": null,
+    "detectedAt": "2026-09-25",
+    "title": "約660万アカウントの情報漏えいを確認",
+    "summary": "約160万アカウントの本人確認書類の漏えいも続報で確認。退会済みの人も対象です。",
+    "leakStatus": "漏えい確認",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "詳細な侵入方法は、確認した第1〜3報では未公表。",
+    "impact": "約660万アカウント／本人確認書類は約160万",
+    "dataTypes": [
+      "氏名・住所",
+      "生年月日・連絡先",
+      "免許証情報",
+      "本人確認書類",
+      "連携サービスID"
+    ],
+    "technical": "第2報で情報の取得を確認、第3報で書類画像の件数を追加。約160万件を約660万件に加算しません。",
+    "lesson": "退会後も保管情報が対象になり得ます。公式窓口で対象範囲を確認してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "タイムズカー 公式発表",
+        "url": "https://share.timescar.jp/news/2026/0929/1816.html",
+        "publishedAt": "2026-09-29",
+        "kind": "一次情報"
+      },
+      {
+        "id": "s2",
+        "title": "タイムズカー 第1報",
+        "url": "https://share.timescar.jp/news/2026/0925/1814.html",
+        "publishedAt": "2026-09-25",
+        "kind": "一次情報"
+      },
+      {
+        "id": "s3",
+        "title": "タイムズカー 第2報",
+        "url": "https://share.timescar.jp/news/2026/0928/1815.html",
+        "publishedAt": "2026-09-28",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-25",
+        "label": "不正アクセス検知・第1報",
+        "sourceId": "s2"
+      },
+      {
+        "date": "2026-09-28",
+        "label": "約660万件の漏えい確認",
+        "sourceId": "s3"
+      },
+      {
+        "date": "2026-09-29",
+        "label": "本人確認書類約160万件を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "sakura-sales-2026",
+    "organization": "さくらインターネット",
+    "industry": "IT・クラウド",
+    "disclosedAt": "2026-08-19",
+    "occurredAt": "2023-04〜2026-03",
+    "detectedAt": null,
+    "title": "販売管理システムの会員情報に影響の可能性",
+    "summary": "サービス提供環境とは別のシステムに侵入。レンタルサーバーへの攻撃との関連は確認されていません。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "侵入経路・技術的詳細は非公表。レンタルサーバー事件との関連性を示す明確な根拠はないとの説明。",
+    "impact": "1,360,563アカウント（影響の可能性）",
+    "dataTypes": [
+      "会員・契約情報",
+      "初期パスワード",
+      "一部のハッシュ化パスワード"
+    ],
+    "technical": "会員IDのハッシュ化パスワード30アカウントと、一部サービスのハッシュ化されていない初期パスワードは別情報です。外部持ち出しの明確な事実は未確認。",
+    "lesson": "対象通知を確認し、初期パスワードを現在も使う場合は会社の案内に従って変更してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "さくらインターネット 公式発表",
+        "url": "https://www.sakura.ad.jp/corporate/information/newsreleases/2026/09/10/1968225692/",
+        "publishedAt": "2026-09-10",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-08-19",
+        "label": "販売管理システムの影響を公表",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-09-10",
+        "label": "第3報で調査結果を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "sakura-rental-2026",
+    "organization": "さくらインターネット",
+    "industry": "IT・クラウド",
+    "disclosedAt": "2026-08-17",
+    "occurredAt": null,
+    "detectedAt": "2026-08-09",
+    "title": "レンタルサーバーの一部に不正アクセス",
+    "summary": "一部サーバーへの侵入とマルウェア設置を確認。影響の可能性を否定できない範囲を含め951アカウントと公表。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "マルウェア",
+    "cause": "侵入経路の詳細は非公表。追加対象には最初の侵入との関連性を確認できないものを含む。",
+    "impact": "951アカウント（影響の可能性を含む）",
+    "dataTypes": [
+      "サーバー上の情報"
+    ],
+    "technical": "当初583と追加368の合計。過去の活動痕跡と継続的侵害を同一視できません。販売管理システムとは分けて記録しています。",
+    "lesson": "対象通知と設定変更の案内を確認してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "さくらインターネット 公式発表",
+        "url": "https://www.sakura.ad.jp/corporate/information/newsreleases/2026/09/10/1968225692/",
+        "publishedAt": "2026-09-10",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-08-09",
+        "label": "異常を検知",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-08-17",
+        "label": "第1報を公表",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-09-10",
+        "label": "影響範囲を更新",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "aflac-2026",
+    "organization": "アフラック生命保険",
+    "industry": "金融・保険",
+    "disclosedAt": "2026-06-30",
+    "occurredAt": "2026-06-10〜06-25",
+    "detectedAt": "2026-06-25",
+    "title": "契約者サイトなどから約440万人の情報漏えい",
+    "summary": "通常利用に似たアクセスを早期に見抜けず、大量照会を監視・制御する機能も不足していたと説明。",
+    "leakStatus": "漏えい確認",
+    "causeStatus": "公表",
+    "category": "アクセス・照会制御の不備",
+    "cause": "アクセスとデータ照会の制御不足。設計レビュー・侵入テストでも今回の手口のリスクを想定できなかったと説明。",
+    "impact": "約440万人／口座情報を含む約22万人",
+    "dataTypes": [
+      "顧客の個人情報",
+      "保険料振替口座情報"
+    ],
+    "technical": "公式FAQの更新値を採用。コードやCVEは特定されていません。口座情報だけで直ちに預金が引き出されるものではないと説明。",
+    "lesson": "暗証番号や認証コードを伝えず、不審な電話・SMSに注意し、口座の取引状況を確認してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "アフラック生命保険 公式発表",
+        "url": "https://www.aflac.co.jp/info/yorisou_faq.html",
+        "publishedAt": "2026-10-01",
+        "kind": "一次情報"
+      },
+      {
+        "id": "s2",
+        "title": "アフラック ニュース一覧",
+        "url": "https://www.aflac.co.jp/corp/profile/news/2026/",
+        "publishedAt": "2026-06-30",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-06-10",
+        "label": "最初の不正アクセス",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-06-25",
+        "label": "CPU高負荷で発覚",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-06-30",
+        "label": "事件を公表",
+        "sourceId": "s2"
+      }
+    ]
+  },
+  {
+    "id": "moneyforward-2026",
+    "organization": "マネーフォワード",
+    "industry": "IT・金融サービス",
+    "disclosedAt": "2026-05-01",
+    "occurredAt": null,
+    "detectedAt": null,
+    "title": "GitHubからコードと個人情報が流出",
+    "summary": "認証情報の漏えいが発端。コード管理環境の個人情報が対象。本番DBからの漏えいはないと会社が説明。",
+    "leakStatus": "漏えい確認",
+    "causeStatus": "公表",
+    "category": "認証情報の漏えい",
+    "cause": "第4報で認証情報の漏えいが発端と明記。認証情報を取得された具体的手法は未公表。",
+    "impact": "複数区分のため単純合算しない",
+    "dataTypes": [
+      "ソースコード",
+      "氏名・メール",
+      "従業員情報",
+      "内部識別子"
+    ],
+    "technical": "第4報で追加判明した顧客124名、取引先28名、従業員2,300名、内部識別子60,449名分を説明。内部識別子はログインIDと異なります。これらだけを全件数としません。",
+    "lesson": "一般的な確認点：開発環境の認証情報管理と、個人情報の混入検知を分けて考えます。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "マネーフォワード 公式発表",
+        "url": "https://corp.moneyforward.com/news/info/20260623-mf-press-1/",
+        "publishedAt": "2026-06-23",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-05-01",
+        "label": "第1報を公表",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-06-23",
+        "label": "精査完了・対策を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "awa-bank-2026",
+    "organization": "阿波銀行",
+    "industry": "金融・保険",
+    "disclosedAt": "2026-04-03",
+    "occurredAt": null,
+    "detectedAt": "2026-03-24",
+    "title": "テスト環境から顧客・株主情報が漏えい",
+    "summary": "認証情報の不正利用に加え、テスト環境とデータの残置、アクセス防止の不備を会社が認めました。",
+    "leakStatus": "漏えい確認",
+    "causeStatus": "公表",
+    "category": "認証情報の不正利用",
+    "cause": "ID・パスワード等の不正利用が直接原因。役目を終えたテスト環境と顧客データの残置も公表。",
+    "impact": "複数の対象区分／公式発表参照",
+    "dataTypes": [
+      "顧客情報",
+      "株主情報"
+    ],
+    "technical": "認証情報の入手方法は未公表。AI活用への言及はありますが、AIによる攻撃とは説明されていません。",
+    "lesson": "一般的な確認点：テスト用データの匿名化、環境の廃止期限、外部アクセス制御を確認します。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "阿波銀行 公式発表",
+        "url": "https://www.awabank.co.jp/assets/news20260603a.pdf",
+        "publishedAt": "2026-06-03",
+        "kind": "一次情報"
+      },
+      {
+        "id": "s2",
+        "title": "阿波銀行 第1報",
+        "url": "https://www.awabank.co.jp/assets/news20260403a.pdf",
+        "publishedAt": "2026-04-03",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-03-24",
+        "label": "外部セキュリティ会社から指摘",
+        "sourceId": "s2"
+      },
+      {
+        "date": "2026-04-03",
+        "label": "第1報を公表",
+        "sourceId": "s2"
+      },
+      {
+        "date": "2026-06-03",
+        "label": "直接原因・管理上の不備を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "mazda-2026",
+    "organization": "マツダ",
+    "industry": "製造",
+    "disclosedAt": "2026-03-19",
+    "occurredAt": null,
+    "detectedAt": "2025-12中旬",
+    "title": "倉庫管理システムの脆弱性を悪用",
+    "summary": "従業員など692件の情報が流出した可能性。一般顧客の情報は対象システムに登録されていません。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "一部公表",
+    "category": "システムの脆弱性",
+    "cause": "システム上の脆弱性が悪用されたと公式発表。製品名、CVE、脆弱性の種類は未公表。",
+    "impact": "692件",
+    "dataTypes": [
+      "氏名・メール",
+      "ユーザーID",
+      "会社名・取引先ID"
+    ],
+    "technical": "判明は2025年12月中旬、公表は2026年3月19日。発生日と公表日を混同しません。会社はアクセス元限定、パッチ適用、監視強化を案内。",
+    "lesson": "一般的な確認点：業務システムの外部公開範囲とパッチ適用状況を見直します。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "マツダ 公式発表",
+        "url": "https://newsroom.mazda.com/ja/publicity/release/2026/202603/260319b.pdf",
+        "publishedAt": "2026-03-19",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2025-12中旬",
+        "label": "不正アクセスの可能性が判明",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-03-19",
+        "label": "原因・対象情報を公表",
+        "sourceId": "s1"
+      }
+    ]
+  },
+  {
+    "id": "athome-2026",
+    "organization": "アットホーム",
+    "industry": "不動産",
+    "disclosedAt": "2026-02-05",
+    "occurredAt": "2026-01-22",
+    "detectedAt": null,
+    "title": "引越し見積もり管理システムに不正ログイン",
+    "summary": "見積もり利用者と一部加盟店・取引先情報に影響の可能性。ほかのサービスへの影響は確認されていません。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "不正ログイン",
+    "cause": "管理システムへの不正ログインは公表。認証情報の入手方法などは未公表。",
+    "impact": "顧客408件／取引先14件／加盟店315件・5,143件",
+    "dataTypes": [
+      "氏名・連絡先",
+      "住所",
+      "取引先情報",
+      "一部加盟店の口座情報"
+    ],
+    "technical": "対象区分を人数として合算しません。第2報で見積もりコンテンツを再開し、会員店向け管理システムは停止継続と説明。",
+    "lesson": "会社の対象通知を確認し、不審な連絡は公式窓口へ確認してください。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "s1",
+        "title": "アットホーム 公式発表",
+        "url": "https://www.athome.co.jp/corporate/news/topics/oshirase-zokuhou-202602/",
+        "publishedAt": "2026-02-17",
+        "kind": "一次情報"
+      },
+      {
+        "id": "s2",
+        "title": "アットホーム 第1報",
+        "url": "https://www.athome.co.jp/corporate/news/topics/oshirase-202602/",
+        "publishedAt": "2026-02-05",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-01-22",
+        "label": "不正アクセス発生・停止",
+        "sourceId": "s1"
+      },
+      {
+        "date": "2026-02-05",
+        "label": "第1報を公表",
+        "sourceId": "s2"
+      },
+      {
+        "date": "2026-02-17",
+        "label": "見積もりコンテンツ再開",
+        "sourceId": "s1"
+      }
+    ]
+  }
+]

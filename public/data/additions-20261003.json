@@ -1,0 +1,848 @@
+[
+  {
+    "id": "digital-gss-2026",
+    "organization": "デジタル庁（GSS）",
+    "industry": "政府・行政",
+    "disclosedAt": "2026-09-11",
+    "occurredAt": null,
+    "detectedAt": "2026-06-25",
+    "title": "VPNの既知の脆弱性から政府共通基盤へ侵入",
+    "summary": "職員・事業者に関する情報が対象。一般の国民の情報は含まれないと公表。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "一部公表",
+    "category": "VPNの脆弱性",
+    "cause": "VPNの既知の脆弱性が修正適用前に悪用された。公表当初の深刻度はMediumで、具体的な製品や脆弱性は非公表。",
+    "impact": "約24.6万件（漏えいの可能性）",
+    "dataTypes": [
+      "氏名",
+      "メールアドレス",
+      "電話番号・住所"
+    ],
+    "technical": "VPNの既知の脆弱性が修正適用前に悪用された。公表当初の深刻度はMediumで、具体的な製品や脆弱性は非公表。",
+    "lesson": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "デジタル庁（GSS）：公表資料",
+        "url": "https://www.digital.go.jp/press/5fc99139-a4e2-4b7b-8b0c-d475e926143f",
+        "publishedAt": "2026-09-12",
+        "kind": "一次情報"
+      },
+      {
+        "id": "initial",
+        "title": "デジタル庁（GSS）：初報",
+        "url": "https://www.digital.go.jp/news/2026-0911-01",
+        "publishedAt": "2026-09-11",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-11",
+        "label": "初報を公表",
+        "sourceId": "initial"
+      },
+      {
+        "date": "2026-09-12",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "VPNの既知の脆弱性から政府共通基盤へ侵入",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "VPNの脆弱性を悪用",
+        "保守運用アカウントを利用",
+        "大量のファイルにアクセス"
+      ],
+      "facts": [
+        {
+          "text": "VPNの既知の脆弱性が修正適用前に悪用された。公表当初の深刻度はMediumで、具体的な製品や脆弱性は非公表。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "約24.6万件（漏えいの可能性）",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "VPNの製品名・CVE",
+        "実際に持ち出された情報の確定範囲"
+      ],
+      "checks": [
+        {
+          "title": "公開資産を棚卸し",
+          "detail": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。"
+        },
+        {
+          "title": "深刻度と公開状態で判断",
+          "detail": "スコアだけに頼らず、外部公開・攻撃情報・重要データの扱いで対応を優先する。"
+        },
+        {
+          "title": "侵害の広がりを抑える",
+          "detail": "サービス間の認証と環境を分離し、不要なデータを保持しない。"
+        }
+      ],
+      "promptKey": "dependencies",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "thinca-2026",
+    "organization": "シンカ",
+    "industry": "IT・クラウド",
+    "disclosedAt": "2026-08-28",
+    "occurredAt": null,
+    "detectedAt": "2026-08-24",
+    "title": "CMSプラグインの脆弱性から不正プログラム設置",
+    "summary": "サービス紹介サイトが侵害。業務サービス「カイクラ」は別環境で影響なし。",
+    "leakStatus": "漏えい未確認",
+    "causeStatus": "一部公表",
+    "category": "CMSプラグインの脆弱性",
+    "cause": "CMSプラグインの脆弱性が悪用されたと調査で判明。外部へのデータ送信や漏えいは確認されなかった。",
+    "impact": "対象4サイトを一時停止／漏えいの痕跡なし",
+    "dataTypes": [
+      "申込者・問い合わせ者の連絡先"
+    ],
+    "technical": "CMSプラグインの脆弱性が悪用されたと調査で判明。外部へのデータ送信や漏えいは確認されなかった。",
+    "lesson": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "シンカ：公表資料",
+        "url": "https://www.thinca.co.jp/news/202609017_news/",
+        "publishedAt": "2026-09-17",
+        "kind": "一次情報"
+      },
+      {
+        "id": "initial",
+        "title": "シンカ：経緯・公開再開",
+        "url": "https://www.thinca.co.jp/news/20260901_news/",
+        "publishedAt": "2026-09-01",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-08-28",
+        "label": "初報を公表",
+        "sourceId": "primary"
+      },
+      {
+        "date": "2026-09-17",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "CMSプラグインの脆弱性から不正プログラム設置",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "CMSプラグインを悪用",
+        "不正プログラムを設置",
+        "環境再構築・データ非保有へ"
+      ],
+      "facts": [
+        {
+          "text": "CMSプラグインの脆弱性が悪用されたと調査で判明。外部へのデータ送信や漏えいは確認されなかった。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "対象4サイトを一時停止／漏えいの痕跡なし",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "プラグイン名・CVE",
+        "侵入の全期間"
+      ],
+      "checks": [
+        {
+          "title": "公開資産を棚卸し",
+          "detail": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。"
+        },
+        {
+          "title": "深刻度と公開状態で判断",
+          "detail": "スコアだけに頼らず、外部公開・攻撃情報・重要データの扱いで対応を優先する。"
+        },
+        {
+          "title": "侵害の広がりを抑える",
+          "detail": "サービス間の認証と環境を分離し、不要なデータを保持しない。"
+        }
+      ],
+      "promptKey": "dependencies",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "harada-beer-2026",
+    "organization": "原田産業（ビールの縁側）",
+    "industry": "小売・EC",
+    "disclosedAt": "2026-08-18",
+    "occurredAt": null,
+    "detectedAt": null,
+    "title": "脆弱性を悪用し注文画面で入力された情報に影響",
+    "summary": "注文確認画面の入力情報が対象。決済を完了しなかった人も含む。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "一部公表",
+    "category": "システムの脆弱性",
+    "cause": "システムの脆弱性から管理者権限が取得され、不正プログラムが稼働した可能性を公表。",
+    "impact": "カード情報を含む9名（可能性）",
+    "dataTypes": [
+      "氏名・住所・連絡先",
+      "クレジットカード情報"
+    ],
+    "technical": "システムの脆弱性から管理者権限が取得され、不正プログラムが稼働した可能性を公表。",
+    "lesson": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "原田産業（ビールの縁側）：公表資料",
+        "url": "https://www.haradacorp.co.jp/news/detail.php?id=371",
+        "publishedAt": "2026-09-14",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-08-18",
+        "label": "初報を公表",
+        "sourceId": "primary"
+      },
+      {
+        "date": "2026-09-14",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "脆弱性を悪用し注文画面で入力された情報に影響",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "システムの脆弱性を悪用",
+        "管理者権限を取得",
+        "注文画面の入力に影響"
+      ],
+      "facts": [
+        {
+          "text": "システムの脆弱性から管理者権限が取得され、不正プログラムが稼働した可能性を公表。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "カード情報を含む9名（可能性）",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "具体的な脆弱性",
+        "その他の影響範囲"
+      ],
+      "checks": [
+        {
+          "title": "公開資産を棚卸し",
+          "detail": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。"
+        },
+        {
+          "title": "深刻度と公開状態で判断",
+          "detail": "スコアだけに頼らず、外部公開・攻撃情報・重要データの扱いで対応を優先する。"
+        },
+        {
+          "title": "侵害の広がりを抑える",
+          "detail": "サービス間の認証と環境を分離し、不要なデータを保持しない。"
+        }
+      ],
+      "promptKey": "dependencies",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "charm-2026",
+    "organization": "チャーム",
+    "industry": "小売・EC",
+    "disclosedAt": "2026-08-13",
+    "occurredAt": null,
+    "detectedAt": "2026-08-11",
+    "title": "本店サイトで情報漏えいと不正ログイン",
+    "summary": "重複を精査し件数を訂正。確認済みとおそれのある情報を区別。",
+    "leakStatus": "漏えい確認",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "不正ログインが確認されたが、メールアドレス・パスワードの入手経路は未特定。",
+    "impact": "約37万件漏えい確認／約2万件はおそれ／不正ログイン239名",
+    "dataTypes": [
+      "顧客・配送先の個人情報"
+    ],
+    "technical": "不正ログインが確認されたが、メールアドレス・パスワードの入手経路は未特定。",
+    "lesson": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "チャーム：公表資料",
+        "url": "https://www.charm.co.jp/honten/info/notice/20260901.html",
+        "publishedAt": "2026-09-02",
+        "kind": "一次情報"
+      },
+      {
+        "id": "initial",
+        "title": "チャーム：初報",
+        "url": "https://www.charm.co.jp/honten/info/notice/20260813.html",
+        "publishedAt": "2026-08-13",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-08-13",
+        "label": "初報を公表",
+        "sourceId": "initial"
+      },
+      {
+        "date": "2026-09-02",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "本店サイトで情報漏えいと不正ログイン",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "本店サイトに不正アクセス",
+        "受注・出荷を停止",
+        "影響範囲を精査・個別通知"
+      ],
+      "facts": [
+        {
+          "text": "不正ログインが確認されたが、メールアドレス・パスワードの入手経路は未特定。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "約37万件漏えい確認／約2万件はおそれ／不正ログイン239名",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "認証情報の入手経路",
+        "退会済み顧客の対象範囲"
+      ],
+      "checks": [
+        {
+          "title": "認可をすべての経路で確認",
+          "detail": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。"
+        },
+        {
+          "title": "異常な操作を検知",
+          "detail": "大量取得や変更、いつもと異なるログインを監視し、対応手順を確認する。"
+        },
+        {
+          "title": "権限とデータを最小化",
+          "detail": "アカウント棚卸しと不要データの保有期間を見直す。"
+        }
+      ],
+      "promptKey": "auth",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "yamato-payment-2026",
+    "organization": "ヤマト運輸",
+    "industry": "物流・決済",
+    "disclosedAt": "2026-09-29",
+    "occurredAt": null,
+    "detectedAt": "2026-09-28",
+    "title": "クロネコ代金後払いに不正アクセス",
+    "summary": "一部の利用者・加盟店・担当社員の情報が対象となる可能性。宅急便など他サービスは通常稼働。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "第三者による不正アクセスを確認。侵入経路は未公表で、範囲の調査を継続。",
+    "impact": "人数未公表／後払いサービス停止",
+    "dataTypes": [
+      "氏名・住所・連絡先",
+      "請求金額・債権残高・商品明細",
+      "加盟店情報"
+    ],
+    "technical": "第三者による不正アクセスを確認。侵入経路は未公表で、範囲の調査を継続。",
+    "lesson": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "ヤマト運輸：公表資料",
+        "url": "https://www.yamato-hd.co.jp/important/info_260929_1.html",
+        "publishedAt": "2026-10-02",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-29",
+        "label": "初報を公表",
+        "sourceId": "primary"
+      },
+      {
+        "date": "2026-10-02",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "クロネコ代金後払いに不正アクセス",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "後払いサービスに不正アクセス",
+        "情報漏えいの可能性を調査",
+        "一部利用者等への対応を継続"
+      ],
+      "facts": [
+        {
+          "text": "第三者による不正アクセスを確認。侵入経路は未公表で、範囲の調査を継続。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "人数未公表／後払いサービス停止",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "侵入経路",
+        "対象人数・確定範囲"
+      ],
+      "checks": [
+        {
+          "title": "認可をすべての経路で確認",
+          "detail": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。"
+        },
+        {
+          "title": "異常な操作を検知",
+          "detail": "大量取得や変更、いつもと異なるログインを監視し、対応手順を確認する。"
+        },
+        {
+          "title": "権限とデータを最小化",
+          "detail": "アカウント棚卸しと不要データの保有期間を見直す。"
+        }
+      ],
+      "promptKey": "auth",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "chibagin-shop-2026",
+    "organization": "ちばぎん商店",
+    "industry": "小売・EC",
+    "disclosedAt": "2026-09-17",
+    "occurredAt": null,
+    "detectedAt": "2026-09-03",
+    "title": "コーポレートサイトがカジノ関連コンテンツに改ざん",
+    "summary": "問い合わせやキャンペーンで入力された個人情報に漏えいのおそれ。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "Webサイト改ざん",
+    "cause": "サーバーへの不正アクセスでサイトが改ざんされた。具体的な侵入経路は公表資料では確認できない。",
+    "impact": "問い合わせ・キャンペーン等の入力情報におそれ",
+    "dataTypes": [
+      "問い合わせ・応募の個人情報"
+    ],
+    "technical": "サーバーへの不正アクセスでサイトが改ざんされた。具体的な侵入経路は公表資料では確認できない。",
+    "lesson": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "ちばぎん商店：公表資料",
+        "url": "https://shop.c-value.jp/view/news/20260917153001",
+        "publishedAt": "2026-09-17",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-17",
+        "label": "初報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "コーポレートサイトがカジノ関連コンテンツに改ざん",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "サイトの改ざんを発見",
+        "公開を停止",
+        "顧客情報への影響を確認"
+      ],
+      "facts": [
+        {
+          "text": "サーバーへの不正アクセスでサイトが改ざんされた。具体的な侵入経路は公表資料では確認できない。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "問い合わせ・キャンペーン等の入力情報におそれ",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "侵入経路・脆弱性",
+        "実際の外部持ち出し"
+      ],
+      "checks": [
+        {
+          "title": "公開資産を棚卸し",
+          "detail": "CMSやプラグイン、VPNを含め、管理者と更新期限を記録する。"
+        },
+        {
+          "title": "深刻度と公開状態で判断",
+          "detail": "スコアだけに頼らず、外部公開・攻撃情報・重要データの扱いで対応を優先する。"
+        },
+        {
+          "title": "侵害の広がりを抑える",
+          "detail": "サービス間の認証と環境を分離し、不要なデータを保持しない。"
+        }
+      ],
+      "promptKey": "dependencies",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "nihon-mail-2026",
+    "organization": "日本大学",
+    "industry": "教育・研究",
+    "disclosedAt": "2026-09-14",
+    "occurredAt": null,
+    "detectedAt": "2026-08-29",
+    "title": "教員メールアカウントを不正利用し迷惑メール送信",
+    "summary": "5名の教員アカウントが踏み台に。一部の内部データにアクセス痕跡。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "メールアカウントの不正利用",
+    "cause": "第三者の不正ログインが確認された。認証情報の入手方法は公表されていない。",
+    "impact": "5アカウント／不審メール1,333件",
+    "dataTypes": [
+      "アカウント内のデータ"
+    ],
+    "technical": "第三者の不正ログインが確認された。認証情報の入手方法は公表されていない。",
+    "lesson": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "日本大学：公表資料",
+        "url": "https://www.nihon-u.ac.jp/hojin_news/others/20260914-282.html",
+        "publishedAt": "2026-09-14",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-14",
+        "label": "初報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "教員メールアカウントを不正利用し迷惑メール送信",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "教員アカウントに不正ログイン",
+        "スパム送信の踏み台に",
+        "アカウント停止・保護措置"
+      ],
+      "facts": [
+        {
+          "text": "第三者の不正ログインが確認された。認証情報の入手方法は公表されていない。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "5アカウント／不審メール1,333件",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "認証情報の入手経路",
+        "過去データへの影響全容"
+      ],
+      "checks": [
+        {
+          "title": "認可をすべての経路で確認",
+          "detail": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。"
+        },
+        {
+          "title": "異常な操作を検知",
+          "detail": "大量取得や変更、いつもと異なるログインを監視し、対応手順を確認する。"
+        },
+        {
+          "title": "権限とデータを最小化",
+          "detail": "アカウント棚卸しと不要データの保有期間を見直す。"
+        }
+      ],
+      "promptKey": "auth",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "science-tokyo-2026",
+    "organization": "東京科学大学",
+    "industry": "教育・研究",
+    "disclosedAt": "2026-09-07",
+    "occurredAt": null,
+    "detectedAt": null,
+    "title": "大学の情報基盤に不正アクセス",
+    "summary": "統合当時の学生・教職員等の情報に漏えいの疑い。病院患者情報の漏えいは確認されていない。",
+    "leakStatus": "漏えいの可能性",
+    "causeStatus": "未公表",
+    "category": "不正アクセス",
+    "cause": "第三者の不正アクセスを確認し対策本部を設置。侵入経路や影響範囲は調査中。",
+    "impact": "人数未公表／構成員情報に漏えいの疑い",
+    "dataTypes": [
+      "氏名・住所・メールアドレス"
+    ],
+    "technical": "第三者の不正アクセスを確認し対策本部を設置。侵入経路や影響範囲は調査中。",
+    "lesson": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "東京科学大学：公表資料",
+        "url": "https://www.isct.ac.jp/ja/news/mrep3c3mj6bx",
+        "publishedAt": "2026-09-07",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-07",
+        "label": "初報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "大学の情報基盤に不正アクセス",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "情報基盤に不正アクセス",
+        "対策本部を設置",
+        "対象範囲を調査"
+      ],
+      "facts": [
+        {
+          "text": "第三者の不正アクセスを確認し対策本部を設置。侵入経路や影響範囲は調査中。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "人数未公表／構成員情報に漏えいの疑い",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "侵入経路",
+        "対象人数・漏えいの確定範囲"
+      ],
+      "checks": [
+        {
+          "title": "認可をすべての経路で確認",
+          "detail": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。"
+        },
+        {
+          "title": "異常な操作を検知",
+          "detail": "大量取得や変更、いつもと異なるログインを監視し、対応手順を確認する。"
+        },
+        {
+          "title": "権限とデータを最小化",
+          "detail": "アカウント棚卸しと不要データの保有期間を見直す。"
+        }
+      ],
+      "promptKey": "auth",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "inex-2026",
+    "organization": "アイネックス",
+    "industry": "メディア・制作",
+    "disclosedAt": "2026-07-01",
+    "occurredAt": null,
+    "detectedAt": "2026-06-24",
+    "title": "取引先を装うフィッシングからメール・クラウドに侵入",
+    "summary": "従業員アカウントでの不正ログインと不審メール送信を確認。",
+    "leakStatus": "漏えい確認",
+    "causeStatus": "一部公表",
+    "category": "フィッシング（会社による推測）",
+    "cause": "従業員の反応とヒアリングから、フィッシングサイトへの認証情報入力が原因と会社は推測。",
+    "impact": "メールアドレス373件漏えい／46件におそれ（単純合算しない）",
+    "dataTypes": [
+      "メールアドレス",
+      "氏名・携帯電話番号"
+    ],
+    "technical": "従業員の反応とヒアリングから、フィッシングサイトへの認証情報入力が原因と会社は推測。",
+    "lesson": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "アイネックス：公表資料",
+        "url": "https://www.i-nex.jp/2026/08/24/security-incident-notice-2/",
+        "publishedAt": "2026-08-24",
+        "kind": "一次情報"
+      },
+      {
+        "id": "initial",
+        "title": "アイネックス：初報",
+        "url": "https://www.i-nex.jp/2026/07/01/security-incident-notice/",
+        "publishedAt": "2026-07-01",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-07-01",
+        "label": "初報を公表",
+        "sourceId": "initial"
+      },
+      {
+        "date": "2026-08-24",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "取引先を装うフィッシングからメール・クラウドに侵入",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "取引先を装うメールに反応",
+        "認証情報の入力を会社が推測",
+        "メール・クラウドに不正アクセス"
+      ],
+      "facts": [
+        {
+          "text": "従業員の反応とヒアリングから、フィッシングサイトへの認証情報入力が原因と会社は推測。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "メールアドレス373件漏えい／46件におそれ（単純合算しない）",
+          "sourceId": "primary"
+        }
+      ],
+      "unknown": [
+        "認証情報流出の技術的な全経路",
+        "多要素認証の当時の構成"
+      ],
+      "checks": [
+        {
+          "title": "認可をすべての経路で確認",
+          "detail": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。"
+        },
+        {
+          "title": "異常な操作を検知",
+          "detail": "大量取得や変更、いつもと異なるログインを監視し、対応手順を確認する。"
+        },
+        {
+          "title": "権限とデータを最小化",
+          "detail": "アカウント棚卸しと不要データの保有期間を見直す。"
+        }
+      ],
+      "promptKey": "auth",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  },
+  {
+    "id": "mogily-2026",
+    "organization": "mogily",
+    "industry": "IT・イベント",
+    "disclosedAt": "2026-09-11",
+    "occurredAt": null,
+    "detectedAt": null,
+    "title": "デジタル整理券の当選結果を落選へ改ざん",
+    "summary": "一部クライアントの抽選データが対象。個人情報の漏えいなしと会社が確認。",
+    "leakStatus": "漏えいなし（公表）",
+    "causeStatus": "一部公表",
+    "category": "管理システムの脆弱性",
+    "cause": "続報で侵入経路となった脆弱性を修復したと公表。具体的な脆弱性は非公表。",
+    "impact": "1クライアント／133名の当選ステータス改ざん",
+    "dataTypes": [
+      "当落ステータス"
+    ],
+    "technical": "続報で侵入経路となった脆弱性を修復したと公表。具体的な脆弱性は非公表。",
+    "lesson": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。",
+    "verifiedAt": "2026-10-03",
+    "sources": [
+      {
+        "id": "primary",
+        "title": "mogily：公表資料",
+        "url": "https://corp.mogily.me/news/5164982803103744/",
+        "publishedAt": "2026-09-17",
+        "kind": "一次情報"
+      },
+      {
+        "id": "initial",
+        "title": "mogily：不正アクセスと改ざんの報告",
+        "url": "https://corp.mogily.me/news/5097564298805248/",
+        "publishedAt": "2026-09-11",
+        "kind": "一次情報"
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-11",
+        "label": "初報を公表",
+        "sourceId": "initial"
+      },
+      {
+        "date": "2026-09-17",
+        "label": "調査結果・続報を公表",
+        "sourceId": "primary"
+      }
+    ],
+    "research": {
+      "headline": "デジタル整理券の当選結果を落選へ改ざん",
+      "scope": "以下は公表資料に基づく要約です。点検項目は一般的な提案であり、この事件の未公表原因を示すものではありません。",
+      "flow": [
+        "管理システムに不正アクセス",
+        "当選を落選に改ざん",
+        "データ復旧・脆弱性修復"
+      ],
+      "facts": [
+        {
+          "text": "続報で侵入経路となった脆弱性を修復したと公表。具体的な脆弱性は非公表。",
+          "sourceId": "primary"
+        },
+        {
+          "text": "1クライアント／133名の当選ステータス改ざん",
+          "sourceId": "initial"
+        }
+      ],
+      "unknown": [
+        "具体的な脆弱性",
+        "攻撃者の認証情報取得の有無"
+      ],
+      "checks": [
+        {
+          "title": "認可をすべての経路で確認",
+          "detail": "画面だけでなくAPI、管理操作、データ単位の権限を点検する。"
+        },
+        {
+          "title": "異常な操作を検知",
+          "detail": "大量取得や変更、いつもと異なるログインを監視し、対応手順を確認する。"
+        },
+        {
+          "title": "権限とデータを最小化",
+          "detail": "アカウント棚卸しと不要データの保有期間を見直す。"
+        }
+      ],
+      "promptKey": "auth",
+      "sources": [],
+      "verifiedAt": "2026-10-03"
+    }
+  }
+]
