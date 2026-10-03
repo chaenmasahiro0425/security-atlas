@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
-import { Shield, Database, Code, Plug, X, Copy, Search } from "lucide-react";
+import {
+  Shield,
+  Database,
+  Code,
+  Plug,
+  X,
+  Copy,
+  Search,
+  ArrowLeft,
+  ArrowRight,
+  KeyRound,
+  Server,
+  FileWarning,
+} from "lucide-react";
 import { filterIncidents } from "./search";
 import type { Incident } from "./types";
 import "./style.css";
@@ -40,6 +53,7 @@ function App() {
     [cause, C] = useState(params.get("cause") || ""),
     [industry, I] = useState(params.get("industry") || ""),
     [leak, L] = useState(params.get("leak") || ""),
+    [year, Y] = useState(params.get("year") || ""),
     [sort, S] = useState(params.get("sort") || "newest"),
     [view, V] = useState("テーブル"),
     [section, N] = useState("db"),
@@ -52,30 +66,41 @@ function App() {
       fetch("./data/incidents.json").then((r) => r.json()),
       fetch("./data/research.json").then((r) => r.json()),
       fetch("./data/additions-20261003.json").then((r) => r.json()),
+      fetch("./data/history-2024-2025.json").then((r) => r.json()),
     ])
-      .then(([a, b, c]) =>
-        R(
-          [...a.map((r: Incident) => ({
+      .then(([a, b, c, d]) =>
+        R([
+          ...a.map((r: Incident) => ({
             ...r,
             research: b[r.id],
             sources: [...r.sources, ...b[r.id].sources],
-          })), ...c],
-        ),
+          })),
+          ...c,
+          ...d,
+        ]),
       )
       .catch(() => E(true));
   }, []);
   const current = rows.find((r) => r.id === id);
   useEffect(() => {
     const p = new URLSearchParams();
-    Object.entries({ q, cause, industry, leak, sort, incident: id }).forEach(
-      ([k, v]) => {
-        if (v) p.set(k, v);
-      },
-    );
+    Object.entries({
+      q,
+      cause,
+      industry,
+      leak,
+      year,
+      sort,
+      incident: id,
+    }).forEach(([k, v]) => {
+      if (v) p.set(k, v);
+    });
     history.replaceState(null, "", "?" + p);
-  }, [q, cause, industry, leak, sort, id]);
+  }, [q, cause, industry, leak, year, sort, id]);
   useEffect(() => {
     if (current && !dialog.current?.open) dialog.current?.showModal();
+    document.body.style.overflow = current ? "hidden" : "";
+    dialog.current?.scrollTo(0, 0);
     if (!current && dialog.current?.open) dialog.current.close();
   }, [current]);
   const visible = filterIncidents(
@@ -84,7 +109,7 @@ function App() {
     industry,
     cause,
     leak,
-    "",
+    year,
     sort,
   ) as Row[];
   const reset = () => {
@@ -92,6 +117,7 @@ function App() {
     C("");
     I("");
     L("");
+    Y("");
   };
   const copy = async (t: string, key: string) => {
     try {
@@ -112,7 +138,13 @@ function App() {
         <small>PERSONAL WORKSPACE</small>
         <button
           className={section === "db" ? "active" : ""}
-          onClick={() => { N("db"); setTimeout(() => document.getElementById("database")?.scrollIntoView(), 0); }}
+          onClick={() => {
+            N("db");
+            setTimeout(
+              () => document.getElementById("database")?.scrollIntoView(),
+              0,
+            );
+          }}
         >
           <Database size={17} />
           事件データベース
@@ -131,7 +163,9 @@ function App() {
           <Plug size={17} />
           MCP <em>Coming soon</em>
         </button>
-        <a className="contribute-nav" href="#contribute">情報を追加・訂正</a>
+        <a className="contribute-nav" href="#contribute">
+          情報を追加・訂正
+        </a>
         <p className="sidebar-note">
           日本のセキュリティ事件簿
           <br />
@@ -154,7 +188,13 @@ function App() {
         </header>
         {section === "db" ? (
           <>
-            <Home rows={rows} open={(id) => { D(id); T("概要"); }} />
+            <Home
+              rows={rows}
+              open={(id) => {
+                D(id);
+                T("概要");
+              }}
+            />
             <div className="page-title" id="database">
               <Database size={35} />
               <div>
@@ -170,10 +210,12 @@ function App() {
                 <b>{rows.length}</b>収録事例
               </span>
               <span>
-                <b>{rows.filter(r => r.causeStatus !== "未公表").length}</b>原因情報あり
+                <b>{rows.filter((r) => r.causeStatus !== "未公表").length}</b>
+                原因情報あり
               </span>
               <span>
-                <b>{rows.filter(r => r.causeStatus === "未公表").length}</b>原因未公表
+                <b>{rows.filter((r) => r.causeStatus === "未公表").length}</b>
+                原因未公表
               </span>
               <span>
                 <b>一次＋二次</b>出典を併記
@@ -230,7 +272,23 @@ function App() {
                 <option value="updated">一次情報：更新順</option>
               </select>
             </div>
+            <p className="coverage">
+              対象公表年：2024–2026 · 記録開始：2026.10.03 ·
+              代表事例を収録（全国の全事件を網羅する統計ではありません）
+            </p>
             <div className="filters">
+              <select
+                aria-label="公表年"
+                value={year}
+                onChange={(e) => Y(e.target.value)}
+              >
+                <option value="">公表年：すべて</option>
+                {["2026", "2025", "2024"].map((x) => (
+                  <option key={x} value={x}>
+                    {x}年
+                  </option>
+                ))}
+              </select>
               <select
                 aria-label="原因の公表状況"
                 value={cause}
@@ -292,7 +350,14 @@ function App() {
                   </thead>
                   <tbody>
                     {visible.map((r) => (
-                      <tr className="incident" key={r.id}>
+                      <tr
+                        className="incident"
+                        key={r.id}
+                        onClick={() => {
+                          D(r.id);
+                          T("概要");
+                        }}
+                      >
                         <td>
                           <button
                             className="incident-link"
@@ -301,8 +366,11 @@ function App() {
                               T("概要");
                             }}
                           >
-                            <strong><Logo name={r.organization} />{r.organization}</strong>
-                            <small>{r.title}</small>
+                            <strong>
+                              <Logo name={r.organization} />
+                              {r.organization}
+                            </strong>
+                            <small title={r.title}>{r.title}</small>
                           </button>
                         </td>
                         <td className="date">{r.disclosedAt}</td>
@@ -320,7 +388,9 @@ function App() {
                           </span>
                           <small>{r.category}</small>
                         </td>
-                        <td className="impact-cell">{r.impact}</td>
+                        <td className="impact-cell" title={r.impact}>
+                          {r.impact}
+                        </td>
                         <td>
                           <span className="tag">{r.leakStatus}</span>
                         </td>
@@ -342,7 +412,10 @@ function App() {
                         T("概要");
                       }}
                     >
-                      <strong><Logo name={r.organization} />{r.organization}</strong>
+                      <strong>
+                        <Logo name={r.organization} />
+                        {r.organization}
+                      </strong>
                       <small>{r.research.headline}</small>
                     </button>
                     <span className="badge">{r.causeStatus}</span>
@@ -463,6 +536,7 @@ function App() {
       </main>
       <dialog
         className="detail-dialog"
+        aria-labelledby="incident-title"
         ref={dialog}
         onCancel={() => D("")}
         onClose={() => D("")}
@@ -470,12 +544,43 @@ function App() {
         {current && (
           <>
             <div className="detail-head">
+              <button className="back-to-db" onClick={() => D("")}>
+                <ArrowLeft size={18} /> 一覧に戻る
+              </button>
               <small>INCIDENT / {current.disclosedAt}</small>
+              <div className="detail-pager">
+                {[-1, 1].map((offset) => {
+                  const index = visible.findIndex((r) => r.id === current.id);
+                  const next = index < 0 ? undefined : visible[index + offset];
+                  return (
+                    <button
+                      key={offset}
+                      aria-label={offset < 0 ? "前の事件" : "次の事件"}
+                      disabled={!next}
+                      onClick={() => {
+                        if (next) {
+                          D(next.id);
+                          T("概要");
+                        }
+                      }}
+                    >
+                      {offset < 0 ? (
+                        <ArrowLeft size={17} />
+                      ) : (
+                        <ArrowRight size={17} />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
               <button aria-label="詳細を閉じる" onClick={() => D("")}>
                 <X />
               </button>
             </div>
-            <h2><Logo name={current.organization} />{current.organization}</h2>
+            <h2 id="incident-title">
+              <Logo name={current.organization} />
+              {current.organization}
+            </h2>
             <p>{current.title}</p>
             <div className="detail-meta">
               <span className="badge known">{current.causeStatus}</span>
@@ -499,12 +604,25 @@ function App() {
             <div className="detail-body">
               {tab === "概要" ? (
                 <>
-                  <small>何が起きた？</small>
+                  <small>発端から影響まで / 公開情報の要約</small>
                   <h3>{current.research.headline}</h3>
                   <p>{current.summary}</p>
+                  <details className="glossary">
+                    <summary>はじめて読む方へ：図解と用語の読み方</summary>
+                    <p>
+                      認証情報はログインのためのID・パスワード等。MFAはパスワードに加えて端末など別の要素で本人を確認する仕組み。ランサムウェアはファイルを使えなくし、金銭を要求する悪意あるプログラムです。図は公開情報の整理であり、未公表の手口は示していません。「可能性」は実際の漏えいが確認されたという意味ではありません。
+                    </p>
+                  </details>
                   <div className="flow">
                     {current.research.flow.map((x, i) => (
                       <div key={x}>
+                        {i === 0 ? (
+                          <KeyRound size={25} />
+                        ) : i === 1 ? (
+                          <Server size={25} />
+                        ) : (
+                          <FileWarning size={25} />
+                        )}
                         <b>0{i + 1}</b>
                         <p>{x}</p>
                       </div>
@@ -533,7 +651,19 @@ function App() {
                   {current.timeline.map((x, i) => (
                     <p className="event" key={i}>
                       <time>{x.date}</time>
-                      {x.label}
+                      <span>
+                        {x.label}{" "}
+                        <a
+                          href={
+                            current.sources.find((s) => s.id === x.sourceId)
+                              ?.url
+                          }
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          根拠 ↗
+                        </a>
+                      </span>
                     </p>
                   ))}
                 </>
