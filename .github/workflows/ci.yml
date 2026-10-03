@@ -15,4 +15,4 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run dev > /tmp/security-atlas-vite.log 2>&1 &
       - run: npx wait-on http://127.0.0.1:3182
-      - run: npx playwright test tests/ui.spec.ts tests/experience.spec.ts tests/legal.spec.ts --workers=1
+      - run: npx playwright test tests/ui.spec.ts tests/experience.spec.ts tests/legal.spec.ts tests/feed.spec.ts --workers=1

@@ -20,6 +20,7 @@ import type { Incident } from "./types";
 import "./style.css";
 import { Home, Community, Logo } from "./Home";
 import { LegalFooter } from "./Legal";
+import { Feed } from "./Feed";
 type Research = {
   headline: string;
   scope: string;
@@ -56,9 +57,9 @@ function App() {
     [industry, I] = useState(params.get("industry") || ""),
     [leak, L] = useState(params.get("leak") || ""),
     [year, Y] = useState(params.get("year") || ""),
-    [sort, S] = useState(params.get("sort") || "newest"),
+    [sort, S] = useState(["newest", "oldest", "updated"].includes(params.get("sort") || "") ? params.get("sort")! : "newest"),
     [view, V] = useState(
-      ["テーブル", "時系列", "ギャラリー"].includes(params.get("view") || "")
+      ["テーブル", "時系列", "ギャラリー", "新着"].includes(params.get("view") || "")
         ? params.get("view")!
         : "テーブル",
     ),
@@ -96,13 +97,13 @@ function App() {
       industry,
       leak,
       year,
-      sort,
-      view,
+      sort: sort === "newest" ? "" : sort,
+      view: view === "テーブル" ? "" : view,
       incident: id,
     }).forEach(([k, v]) => {
       if (v) p.set(k, v);
     });
-    history.replaceState(null, "", "?" + p);
+    history.replaceState(null, "", location.pathname + (p.size ? "?" + p : "") + location.hash);
   }, [q, cause, industry, leak, year, sort, view, id]);
   useEffect(() => {
     if (current && !dialog.current?.open) dialog.current?.showModal();
@@ -256,12 +257,12 @@ function App() {
               </button>
             </div>
             <div className="views">
-              {["テーブル", "時系列", "ギャラリー"].map((x) => (
+              {["テーブル", "時系列", "ギャラリー", "新着"].map((x) => (
                 <button
                   className={view === x ? "selected" : ""}
                   aria-pressed={view === x}
                   key={x}
-                  onClick={() => V(x)}
+                  onClick={() => { V(x); if (x === "新着") S("newest"); }}
                 >
                   {x}
                 </button>
@@ -417,6 +418,8 @@ function App() {
                   </tbody>
                 </table>
               </div>
+            ) : view === "新着" ? (
+              <Feed rows={visible} open={(id) => { D(id); T("概要"); }} />
             ) : view === "ギャラリー" ? (
               <div className="incident-gallery" aria-label="事件のギャラリー">
                 {visible.map((r) => (

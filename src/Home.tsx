@@ -57,7 +57,7 @@ export function Home({
             事件データベースを見る <ArrowRight size={18} />
           </a>
           <a className="hero-stat-link" href="#annual-statistics">
-            2025年、3,063万人分の情報が漏えい・紛失。集計範囲と出典を見る ↓
+            2025年、約3,063万人分の情報が漏えい・紛失。集計範囲と出典を見る ↓
           </a>
         </div>
         <div className="atlas-map">
@@ -99,24 +99,21 @@ export function Home({
         aria-label="2025年の情報漏えい・紛失統計"
       >
         <div className="annual-heading">
-          <span className="eyebrow">2025 / THE SCALE OF EXPOSURE</span>
+          <span className="eyebrow">2025年 / 上場企業・子会社の公表</span>
           <h2>
-            1年で、3,063万人分。
+            1年で、約3,063万人分。
             <br />
             情報の向こうに、暮らしがある。
           </h2>
           <p>漏えいは、サービスの停止や二次被害にもつながります。</p>
         </div>
         <div className="annual-main">
-          <span>公表された個人情報の漏えい・紛失</span>
+          <span>公表された個人情報の漏えい・紛失（概数）</span>
           <div>
             <b>3,063</b>
-            <strong>
-              万<br />
-              人分
-            </strong>
+            <strong>万人分</strong>
           </div>
-          <small>正確な集計値 30,636,910人分 · 前年比 +93.1%</small>
+          <small>正確な集計値：30,636,910人分 · 前年比 +93.1%</small>
         </div>
         <div className="annual-sub">
           <div>

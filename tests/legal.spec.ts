@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-const base = 'http://127.0.0.1:3182';
+const base = process.env.ATLAS_BASE || 'http://127.0.0.1:3182';
 test('participation button and legal dialogs preserve filters and support keyboard', async ({page}) => {
  await page.goto(base + '/?q=GitHub&view=ギャラリー');
  await expect(page.locator('.gallery-card')).toHaveCount(1);
