@@ -76,9 +76,7 @@ test("landing precedes database and contributions open a reviewable GitHub draft
 }) => {
   await page.goto("http://127.0.0.1:3182");
   await expect(page.locator("tr.incident")).toHaveCount(30);
-  await expect(page.locator(".atlas-hero h1")).toContainText(
-    "次に、どう備えるか",
-  );
+  await expect(page.locator(".atlas-hero h1")).toContainText("情報漏洩まとめ");
   const positions = await page.evaluate(() => [
     document.querySelector(".atlas-hero")!.getBoundingClientRect().top,
     document.querySelector("#database")!.getBoundingClientRect().top,
