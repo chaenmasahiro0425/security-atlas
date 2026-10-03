@@ -25,7 +25,7 @@ const pages = {
   operator: {
     title: "運営について",
     sections: [
-      ["個人でつくり、みんなで育てる", "運営：茶圓。Security Atlasは個人の取り組みとして運営しています。事件の発端、わかったこと、まだ公表されていないことを整理し、次の被害を防ぐために共有することが目的です。"],
+      ["個人でつくり、みんなで育てる", "運営：茶圓 / masahirochaen。Security Atlasは個人の取り組みとして運営しています。事件の発端、わかったこと、まだ公表されていないことを整理し、次の被害を防ぐために共有することが目的です。"],
       ["みなさんの情報を、次の備えに", "情報追加・訂正はGitHubで受け付けています。一次情報のURL、続報、公開された技術的な原因などをお寄せください。点検プロンプトも事例の知見に合わせて改善していきます。"],
       ["MCPは開発予定です", "事件検索・出典確認・点検観点の取得を開発ツールから使える仕組みを計画しています。MCPサーバー・接続URL・インストール設定は現在未提供です。"],
     ],
@@ -69,6 +69,7 @@ export function LegalFooter() {
       {page && <article>
         <header><h2 id="legal-title">{pages[page].title}</h2><button autoFocus onClick={close} aria-label="案内を閉じる"><X /></button></header>
         {pages[page].sections.map(([title, text]) => <section key={title}><h3>{title}</h3><p>{text}</p></section>)}
+        {page === "operator" && <p className="legal-external">運営者のX：<a href="https://x.com/masahirochaen" target="_blank" rel="noreferrer">@masahirochaen <ArrowUpRight size={14} style={{ verticalAlign: "middle" }} /></a></p>}
         {page === "privacy" && <p className="legal-external">外部サービスのポリシー：<a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">Vercel</a> · <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google</a> · <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noreferrer">GitHub</a></p>}
         <a className="atlas-cta" href={repo + "/issues/new/choose"} target="_blank" rel="noreferrer">情報追加・訂正の窓口 <ArrowUpRight size={17} /></a>
       </article>}
