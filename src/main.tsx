@@ -13,6 +13,7 @@ import {
   KeyRound,
   Server,
   FileWarning,
+  Github,
 } from "lucide-react";
 import { filterIncidents } from "./search";
 import type { Incident } from "./types";
@@ -55,7 +56,11 @@ function App() {
     [leak, L] = useState(params.get("leak") || ""),
     [year, Y] = useState(params.get("year") || ""),
     [sort, S] = useState(params.get("sort") || "newest"),
-    [view, V] = useState("テーブル"),
+    [view, V] = useState(
+      ["テーブル", "時系列", "ギャラリー"].includes(params.get("view") || "")
+        ? params.get("view")!
+        : "テーブル",
+    ),
     [section, N] = useState("db"),
     [id, D] = useState(params.get("incident") || ""),
     [tab, T] = useState("概要"),
@@ -91,12 +96,13 @@ function App() {
       leak,
       year,
       sort,
+      view,
       incident: id,
     }).forEach(([k, v]) => {
       if (v) p.set(k, v);
     });
     history.replaceState(null, "", "?" + p);
-  }, [q, cause, industry, leak, year, sort, id]);
+  }, [q, cause, industry, leak, year, sort, view, id]);
   useEffect(() => {
     if (current && !dialog.current?.open) dialog.current?.showModal();
     document.body.style.overflow = current ? "hidden" : "";
@@ -163,6 +169,14 @@ function App() {
           <Plug size={17} />
           MCP <em>Coming soon</em>
         </button>
+        <a
+          className="github-nav"
+          href="https://github.com/chaenmasahiro0425/security-atlas"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Github size={17} /> GitHub
+        </a>
         <a className="contribute-nav" href="#contribute">
           情報を追加・訂正
         </a>
@@ -241,9 +255,10 @@ function App() {
               </button>
             </div>
             <div className="views">
-              {["テーブル", "時系列"].map((x) => (
+              {["テーブル", "時系列", "ギャラリー"].map((x) => (
                 <button
                   className={view === x ? "selected" : ""}
+                  aria-pressed={view === x}
                   key={x}
                   onClick={() => V(x)}
                 >
@@ -273,7 +288,8 @@ function App() {
               </select>
             </div>
             <p className="coverage">
-              対象公表年：2024–2026 · 最古の収録公表日：2024.05.29 · 調査更新：2026.10.03 ·
+              対象公表年：2024–2026 · 最古の収録公表日：2024.05.29 ·
+              調査更新：2026.10.03 ·
               代表事例を収録（全国の全事件を網羅する統計ではありません）
             </p>
             <div className="filters">
@@ -399,6 +415,37 @@ function App() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            ) : view === "ギャラリー" ? (
+              <div className="incident-gallery" aria-label="事件のギャラリー">
+                {visible.map((r) => (
+                  <button
+                    className="gallery-card"
+                    key={r.id}
+                    onClick={() => {
+                      D(r.id);
+                      T("概要");
+                    }}
+                  >
+                    <div className="gallery-top">
+                      <Logo name={r.organization} />
+                      <time>{r.disclosedAt}</time>
+                      <ArrowRight size={18} />
+                    </div>
+                    <span className="gallery-industry">{r.industry}</span>
+                    <h3>{r.organization}</h3>
+                    <p className="gallery-title">{r.title}</p>
+                    <p className="gallery-impact">{r.impact}</p>
+                    <div className="gallery-status">
+                      <span className="badge">{r.causeStatus}</span>
+                      <span className="tag">{r.leakStatus}</span>
+                    </div>
+                    <div className="gallery-foot">
+                      <span>出典 {r.sources.length}件</span>
+                      <span>発端・原因・対策を読む</span>
+                    </div>
+                  </button>
+                ))}
               </div>
             ) : (
               <div className="timeline-list">

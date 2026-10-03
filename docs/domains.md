@@ -1,16 +1,9 @@
-# ドメイン候補
+# 独自ドメイン
 
-2026-10-03にVerisign RDAPで確認。404はRDAPに登録情報が見つからない状態で、取得可能性・価格の保証ではありません。購入直前にregistrarで最終確認してください。購入はしていません。
+採用ドメイン: https://securityatlas.org
 
-| 候補 | 読み・意図 | 確認結果 |
-| --- | --- | --- |
-| secujiken.com | セキュ事件。日本向けで覚えやすい | RDAP 404 |
-| jikenlog.com | 事件ログ。時系列の蓄積を表す | RDAP 404 |
-| cyberjiken.com | サイバー事件。対象が伝わる | RDAP 404 |
-| security.com | 一般名詞で短い | 登録済み |
-| security-atlas.com | 仮サービス名との一致 | 登録済み |
-| incidentatlas.com | インシデントの地図 | 登録済み |
+2026-10-03に本人が購入したドメインを、既存のVercelプロジェクト `security-atlas` に接続しました。`www.securityatlas.org` も同じプロジェクトに接続しています。
 
-確認API: `https://rdap.verisign.com/com/v1/domain/候補ドメイン`
+ネームサーバーは `ns1.vercel-dns.com` と `ns2.vercel-dns.com`。DNSの反映状況はVercelのDomains画面から確認できます。購入直後は反映に時間がかかる場合があります。
 
-推奨はsecujiken.com。サービス表示名は「Security Atlas」から変更可能です。.jp候補の登録状況と価格は未確認です。
+既存の公開URL: https://security-atlas.vercel.app
