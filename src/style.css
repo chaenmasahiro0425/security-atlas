@@ -6,7 +6,7 @@
   font-synthesis: none;
   --blue: #2454eb;
   --ink: #15284c;
-  --muted: #657896;
+  --muted: #50627c;
   --line: #dce5f4;
   --wash: #f4f7ff;
   --pale: #eaf0ff;
@@ -176,7 +176,7 @@ em {
   color: var(--blue);
 }
 .sidebar em {
-  font-size: 10px;
+  font-size: 12px;
   background: var(--pale);
   color: var(--blue);
   padding: 3px 5px;
@@ -189,7 +189,7 @@ em {
 .workspace header {
   padding: 19px 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   border-bottom: 1px solid var(--line);
 }
 .eyebrow {
@@ -197,7 +197,7 @@ em {
   align-items: center;
   gap: 8px;
   color: var(--blue);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   font-weight: 700;
 }
@@ -226,7 +226,7 @@ em {
 }
 .hero-copy > small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 17px;
 }
 .atlas-cta,
@@ -269,7 +269,7 @@ em {
   top: 15px;
   left: 14px;
   color: var(--blue);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.18em;
 }
 .map-counter {
@@ -289,14 +289,14 @@ em {
   color: var(--blue);
 }
 .map-counter span {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.9;
 }
 .atlas-map > small {
   position: absolute;
   bottom: 8px;
   left: 10px;
-  font-size: 9px;
+  font-size: 12px;
 }
 .annual-impact {
   display: grid;
@@ -462,7 +462,7 @@ em {
 }
 .latest-grid small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   margin-top: 3px;
 }
@@ -472,7 +472,7 @@ em {
   line-height: 1.8;
 }
 .latest-grid p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin-bottom: 15px;
 }
@@ -508,7 +508,7 @@ em {
   color: var(--blue);
 }
 .page-title small {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   color: var(--blue);
 }
@@ -534,7 +534,7 @@ em {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .stats b {
@@ -551,7 +551,7 @@ em {
   font-size: 18px;
 }
 .db-title button {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--blue);
 }
 .views,
@@ -576,7 +576,7 @@ em {
 .views small {
   margin-left: auto;
   align-self: center;
-  font-size: 10px;
+  font-size: 12px;
 }
 .toolbar {
   display: flex;
@@ -603,11 +603,11 @@ em {
   font-size: 12px;
 }
 .toolbar select {
-  font-size: 11px;
+  font-size: 12px;
   min-width: 160px;
 }
 .coverage {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin: 13px 0;
 }
@@ -619,16 +619,16 @@ em {
   margin-bottom: 17px;
 }
 .filters select {
-  font-size: 11px;
+  font-size: 12px;
   padding: 8px 10px;
 }
 .filters button {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--blue);
 }
 .filters > span {
   margin-left: auto;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .table-wrap {
@@ -641,12 +641,12 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   min-width: 1180px;
-  font-size: 11px;
+  font-size: 12px;
 }
 th {
   text-align: left;
   background: var(--wash);
-  font-size: 10px;
+  font-size: 12px;
   padding: 13px 12px;
   color: var(--muted);
   font-weight: 600;
@@ -704,7 +704,7 @@ tr.incident:hover {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .incident-link strong {
   display: flex;
@@ -723,7 +723,7 @@ tr.incident:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 td:nth-child(4) > small {
@@ -737,7 +737,7 @@ td:nth-child(4) > small {
 .badge {
   display: inline-flex;
   align-items: center;
-  font-size: 10px;
+  font-size: 12px;
   background: var(--pale);
   color: #45638e;
   border-radius: 4px;
@@ -757,14 +757,14 @@ td:nth-child(4) > small {
 }
 .db-foot,
 .reference {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin: 16px 0;
 }
 .policy {
   padding: 18px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .policy p {
@@ -790,7 +790,7 @@ td:nth-child(4) > small {
   padding: 16px 0;
 }
 .timeline-list time {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
 }
@@ -865,14 +865,14 @@ td:nth-child(4) > small {
   font-size: 13px;
 }
 .roadmap p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   margin: 8px 0 0;
 }
 .commons-intro > a {
   display: inline-block;
   margin-top: 20px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .commons form {
   padding: 28px;
@@ -888,14 +888,14 @@ td:nth-child(4) > small {
   font-size: 22px;
 }
 .commons form p {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
 }
 .commons label {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-size: 11px;
+  font-size: 12px;
   margin: 15px 0;
 }
 .commons label input,
@@ -908,7 +908,7 @@ td:nth-child(4) > small {
   flex-direction: row;
   align-items: flex-start;
   gap: 9px;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.8;
 }
 .consent input {
@@ -918,17 +918,17 @@ td:nth-child(4) > small {
 .commons form > small {
   display: block;
   margin-top: 12px;
-  font-size: 9px;
+  font-size: 12px;
 }
 .commons details {
   margin-top: 20px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .commons details textarea {
   margin-top: 10px;
 }
 footer {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   padding: 22px 0;
   border-top: 1px solid var(--line);
@@ -964,7 +964,7 @@ footer {
   padding: 16px 5%;
 }
 .detail-head small {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   margin-right: auto;
 }
@@ -1016,7 +1016,7 @@ footer {
 .detail-meta > button {
   margin-left: auto;
   color: var(--blue);
-  font-size: 11px;
+  font-size: 12px;
 }
 .detail-dialog > .tabs {
   position: sticky;
@@ -1036,7 +1036,7 @@ footer {
   line-height: 1.85;
 }
 .detail-body > small {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--blue);
   letter-spacing: 0.05em;
 }
@@ -1082,7 +1082,7 @@ footer {
 }
 .flow b {
   color: var(--blue);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
 }
 .flow p {
@@ -1124,7 +1124,7 @@ footer {
 }
 .event a {
   margin-left: 10px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .unknown-box {
   border: 1px dashed #a9bbdd;
@@ -1154,7 +1154,7 @@ footer {
   margin: 22px 0;
 }
 .sources h4 small {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   margin-left: 10px;
 }
@@ -1165,7 +1165,7 @@ footer {
 }
 .sources a small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 4px;
 }
 .check-card {
@@ -1194,7 +1194,7 @@ footer {
     gap: 14px;
   }
   .sidebar button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .contribute-nav {
     display: none;
@@ -1242,17 +1242,17 @@ footer {
     font-size: 20px;
   }
   .sidebar button {
-    font-size: 10px;
+    font-size: 12px;
     gap: 5px;
   }
   .sidebar em {
-    font-size: 8px;
+    font-size: 12px;
   }
   .sidebar button svg {
     width: 14px;
   }
   .workspace header {
-    font-size: 9px;
+    font-size: 12px;
   }
   .atlas-hero {
     grid-template-columns: 1fr;
@@ -1280,7 +1280,7 @@ footer {
     bottom: 25px;
   }
   .atlas-map > small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .annual-impact {
     grid-template-columns: 1fr;
@@ -1323,7 +1323,7 @@ footer {
     font-size: 22px;
   }
   .section-heading a {
-    font-size: 10px;
+    font-size: 12px;
   }
   .latest-grid {
     grid-template-columns: 1fr;
@@ -1352,31 +1352,31 @@ footer {
     font-size: 20px;
   }
   .stats span {
-    font-size: 9px;
+    font-size: 12px;
   }
   .toolbar {
     flex-direction: column;
   }
   .toolbar select {
     align-self: flex-end;
-    font-size: 10px;
+    font-size: 12px;
   }
   .coverage {
-    font-size: 9px;
+    font-size: 12px;
     line-height: 1.8;
   }
   .filters {
     gap: 7px;
   }
   .filters select {
-    font-size: 10px;
+    font-size: 12px;
     padding: 8px;
   }
   .filters button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .views small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .table-wrap {
     margin-right: -20px;
@@ -1418,10 +1418,10 @@ footer {
     padding: 14px 20px;
   }
   .detail-head small {
-    font-size: 8px;
+    font-size: 12px;
   }
   .back-to-db {
-    font-size: 10px;
+    font-size: 12px;
   }
   .detail-pager {
     gap: 7px;
@@ -1443,7 +1443,7 @@ footer {
     gap: 7px;
   }
   .detail-meta > button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .detail-dialog > .tabs {
     top: 61px;
@@ -1451,7 +1451,7 @@ footer {
     margin-bottom: 25px;
   }
   .tabs button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .detail-body {
     font-size: 13px;
@@ -1489,20 +1489,20 @@ footer {
   }
   .event {
     gap: 15px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .sources a {
-    font-size: 11px;
+    font-size: 12px;
   }
   .unknown-box {
     padding: 18px;
   }
   .detail-body pre {
     padding: 17px;
-    font-size: 11px;
+    font-size: 12px;
   }
   footer {
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1516,7 +1516,7 @@ footer {
 }
 .hero-stat-link {
   display: block;
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 22px;
   line-height: 1.8;
 }
@@ -1543,21 +1543,21 @@ footer {
 .feed-identity .company-logo { width: 44px; height: 44px; flex-shrink: 0; }
 .feed-identity > div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .feed-identity strong { font-size: 15px; overflow-wrap: anywhere; }
-.feed-identity span, .feed-identity time { font-size: 11px; color: var(--muted); }
+.feed-identity span, .feed-identity time { font-size: 12px; color: var(--muted); }
 .feed-identity time { margin-left: auto; white-space: nowrap; }
 .feed-open { display: block; width: 100%; text-align: left; color: var(--ink); padding: 0; margin: 18px 0; }
 .feed-open h3 { font-size: 21px; line-height: 1.6; margin: 0 0 10px; }
 .feed-open p { font-size: 14px; line-height: 1.9; margin: 0 0 18px; color: var(--muted); }
 .feed-open:hover h3 { color: var(--blue); }
 .feed-impact { padding: 15px 18px; background: #f5f7ff; border-left: 3px solid var(--blue); border-radius: 0 6px 6px 0; }
-.feed-impact > span { display: block; font-size: 10px; color: var(--muted); margin-bottom: 6px; }
+.feed-impact > span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
 .feed-impact strong { font-size: 14px; line-height: 1.7; }
 .feed-read { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--blue); margin-top: 18px; }
 .feed-status { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0; }
 .feed-source { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); }
 .feed-source:hover { background: #f5f7ff; border-color: var(--blue); }
 .feed-source div { min-width: 0; }
-.feed-source span { font-size: 10px; display: block; color: var(--muted); margin-bottom: 6px; }
+.feed-source span { font-size: 12px; display: block; color: var(--muted); margin-bottom: 6px; }
 .feed-source strong { font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
 .feed-source svg { flex-shrink: 0; color: var(--blue); }
 @media (max-width: 700px) {
@@ -1613,7 +1613,7 @@ footer {
 }
 .gallery-industry {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 6px;
 }
 .gallery-card h3 {
@@ -1647,7 +1647,7 @@ footer {
   gap: 8px;
   padding-top: 16px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 @media (max-width: 1100px) {
   .incident-gallery {
@@ -1666,7 +1666,7 @@ footer {
     padding: 22px;
   }
   .github-nav {
-    font-size: 10px;
+    font-size: 12px;
   }
   .hero-copy h1 {
     font-size: clamp(29px, 8.2vw, 38px);
@@ -1718,4 +1718,68 @@ footer {
 @media (min-width:651px) and (max-width:900px) {
   .sidebar { flex-wrap: wrap; justify-content: flex-start; gap: 14px 18px; }
   .sidebar .brand { flex-basis: 100%; margin-right: 0; }
+}
+
+/* Readable text and controls across database, evidence and mobile layouts. */
+.workspace main { max-width: 1600px; margin-inline: auto; }
+.sidebar { flex-wrap: wrap; }
+.sidebar button, .github-nav { font-size: 14px; min-height: 44px; }
+.sidebar .brand { min-height: 44px; }
+.eyebrow { font-size: 12px; letter-spacing: 0.08em; }
+.hero-copy p, .page-title p, .commons-intro > p { font-size: 15px; }
+.atlas-cta, .primary { min-height: 48px; font-size: 14px; }
+.latest-grid > button > div { font-size: 14px; }
+.latest-grid h3 { font-size: 18px; }
+.latest-grid p, .roadmap p, .commons form p { font-size: 14px; }
+.stats { gap: 16px 32px; }
+.stats span { font-size: 13px; }
+.stats b { font-family: Arial, "Helvetica Neue", sans-serif; }
+.views { flex-wrap: wrap; gap: 8px 12px; padding-bottom: 8px; }
+.views button { padding: 12px 16px; border-radius: 6px; font-size: 14px; min-height: 44px; }
+.views .selected { background: var(--pale); font-weight: 700; border-bottom: 2px solid var(--blue); }
+.tabs button { min-height: 44px; font-size: 14px; font-weight: 600; }
+.toolbar input, .toolbar select, .filters select { font-size: 16px; min-height: 48px; }
+.filters button, .db-title button { min-height: 44px; padding: 8px 12px; font-size: 13px; }
+.coverage, .db-foot, .reference, .policy { font-size: 13px; line-height: 1.9; }
+table { font-size: 14px; }
+th { font-size: 13px; padding-block: 16px; }
+td { padding-block: 14px; height: 62px; }
+.incident-link { align-items: flex-start; flex-direction: column; gap: 6px; font-size: 14px; }
+.incident-link strong { max-width: 100%; font-size: 15px; }
+.incident-link small { width: 100%; font-size: 12px; }
+.timeline-list .incident-link { flex-direction: row; align-items: center; flex-wrap: wrap; }
+.tag, .badge { font-size: 12px; line-height: 1.6; }
+.badge.unknown { color: #50627c; }
+.gallery-title, .feed-open p { font-size: 15px; }
+.gallery-foot, .feed-source strong { font-size: 13px; line-height: 1.8; }
+.commons label { font-size: 14px; }
+.commons label input, .commons select, .commons textarea { font-size: 16px; }
+.commons .consent { font-size: 13px; }
+.sources section > a { line-height: 1.8; text-decoration: underline; text-underline-offset: 3px; }
+.detail-body { font-size: 15px; }
+.detail-body a, .check-card p, .glossary, .scope { font-size: 13px; }
+.site-footer { font-size: 13px; }
+.site-footer button { font-size: 13px; min-height: 44px; }
+.legal-external a { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 700px) {
+  .sidebar { gap: 4px 14px; }
+  .sidebar button, .github-nav { font-size: 12px; }
+  .sidebar em { font-size: 10px; }
+  .hero-copy p { font-size: 15px; }
+  .views { gap: 6px; }
+  .views button { padding-inline: 12px; }
+  .views small { flex-basis: 100%; margin-left: 0; }
+  .filters select { max-width: 100%; font-size: 14px; }
+  .filters > span { flex-basis: 100%; margin-left: 0; }
+  .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats span { flex-wrap: wrap; gap: 6px; }
+  .stats b { font-size: 23px; }
+  .latest-grid h3 { font-size: 17px; }
+  .section-heading { align-items: flex-start; gap: 12px; flex-wrap: wrap; }
+  .section-heading a { font-size: 13px; min-height: 44px; display: inline-flex; align-items: center; }
+  .detail-head { flex-wrap: wrap; }
+  .detail-head small { font-size: 12px; }
+  .back-to-db { font-size: 13px; min-height: 44px; }
+  .detail-dialog > .tabs { top: 0; position: relative; gap: 20px; }
+  .detail-body { font-size: 14px; }
 }
