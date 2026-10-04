@@ -6,9 +6,9 @@ test("gallery filters, URL persistence and keyboard detail navigation", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   await page.getByRole("button", { name: "ギャラリー", exact: true }).click();
-  await expect(page.locator(".gallery-card")).toHaveCount(30);
+  await expect(page.locator(".gallery-card")).toHaveCount(45);
   await expect(
     page.getByRole("button", { name: "ギャラリー", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
@@ -39,7 +39,7 @@ test("gallery filters, URL persistence and keyboard detail navigation", async ({
   await expect(page.locator(".gallery-card")).toHaveCount(0);
   await expect(page.getByText("条件に一致する事例がありません")).toBeVisible();
   await page.getByRole("button", { name: "すべての事例を見る" }).click();
-  await expect(page.locator(".gallery-card")).toHaveCount(30);
+  await expect(page.locator(".gallery-card")).toHaveCount(45);
   expect(errors).toEqual([]);
 });
 test("filtered JSON export matches displayed records and evidence links", async ({
@@ -73,7 +73,7 @@ for (const width of [320, 390, 768, 1440])
   test(`gallery and details fit ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(base + "/?view=ギャラリー");
-    await expect(page.locator(".gallery-card")).toHaveCount(30);
+    await expect(page.locator(".gallery-card")).toHaveCount(45);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -99,11 +99,11 @@ test("data failure displays recovery message", async ({ page }) => {
   await expect(page.getByRole("alert")).toContainText("再読み込み");
   await page.unroute("**/data/history-2024-2025.json");
   await page.reload();
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
 });
 test("contribution form validates inputs without sending", async ({ page }) => {
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   const form = page.locator(".commons form");
   expect(await form.evaluate((e: HTMLFormElement) => e.checkValidity())).toBe(
     false,

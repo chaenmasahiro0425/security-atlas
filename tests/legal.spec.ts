@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 const base = process.env.ATLAS_BASE || 'http://127.0.0.1:3182';
 test('participation button and legal dialogs preserve filters and support keyboard', async ({page}) => {
  await page.goto(base + '/?q=GitHub&view=ギャラリー');
- await expect(page.locator('.gallery-card')).toHaveCount(1);
+ await expect(page.locator('.gallery-card')).toHaveCount(2);
  await expect(page.locator('.hero-copy')).not.toContainText('資料確認');
  const cta=page.locator('.contribute-nav');
  expect(await cta.evaluate(e=>getComputedStyle(e).backgroundColor)).toBe('rgb(36, 84, 235)');
@@ -14,7 +14,7 @@ test('participation button and legal dialogs preserve filters and support keyboa
  await page.reload(); await expect(page.getByRole('dialog')).toBeVisible();
  await page.keyboard.press('Escape'); await expect(page.getByRole('dialog')).not.toBeVisible();
  expect(new URL(page.url()).searchParams.get('q')).toBe('GitHub');
- await expect(page.locator('.gallery-card')).toHaveCount(1);
+ await expect(page.locator('.gallery-card')).toHaveCount(2);
  for(const title of ['利用規約','運営について']){
   await page.getByRole('button',{name:title,exact:true}).click();
   await expect(page.getByRole('dialog').getByRole('heading',{name:title,exact:true})).toBeVisible();

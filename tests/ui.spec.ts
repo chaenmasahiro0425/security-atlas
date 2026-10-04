@@ -8,11 +8,12 @@ test("database search, dates, sources, prompts and MCP", async ({
   page.on("pageerror", (e) => errors.push(e.message));
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   await page.getByRole("combobox", { name: "並び順" }).selectOption("oldest");
-  await expect(page.locator("tr.incident").first()).toContainText("イセトー");
+  await expect(page.locator("tr.incident").first()).toContainText("GMOペイメントゲートウェイ");
   await page.getByRole("textbox", { name: "事件を検索" }).fill("ＧｉｔＨｕｂ");
-  await expect(page.locator("tr.incident")).toHaveCount(1);
+  await expect(page.locator("tr.incident")).toHaveCount(2);
+  await page.getByRole("combobox", { name: "公表年" }).selectOption("2026");
   await page.locator(".incident-link").click();
   await expect(page.getByRole("dialog")).toBeVisible();
   await expect(
@@ -37,10 +38,10 @@ test("database search, dates, sources, prompts and MCP", async ({
   await page
     .getByRole("combobox", { name: "原因の公表状況" })
     .selectOption("未公表");
-  await expect(page.locator("tr.incident")).toHaveCount(13);
+  await expect(page.locator("tr.incident")).toHaveCount(17);
   await page.getByRole("button", { name: "絞り込みをリセット" }).click();
   await page.getByRole("button", { name: "時系列", exact: true }).click();
-  await expect(page.locator("article.incident")).toHaveCount(30);
+  await expect(page.locator("article.incident")).toHaveCount(45);
   await page
     .getByRole("button", { name: "点検プロンプト", exact: true })
     .click();
@@ -54,7 +55,7 @@ test("database search, dates, sources, prompts and MCP", async ({
 test("desktop and mobile layout", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   await page.screenshot({ path: `${process.env.ATLAS_SCREENSHOTS || "docs"}/desktop.png`, fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
@@ -76,7 +77,7 @@ test("landing precedes database and contributions open a reviewable GitHub draft
   page,
 }) => {
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   await expect(page.locator(".atlas-hero h1")).toContainText("情報漏洩まとめ");
   const positions = await page.evaluate(() => [
     document.querySelector(".atlas-hero")!.getBoundingClientRect().top,
@@ -102,7 +103,7 @@ test("year filters, full screen pager, official logos and annual scope", async (
   page,
 }) => {
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   await page.getByRole("combobox", { name: "公表年" }).selectOption("2024");
   await expect(page.locator("tr.incident")).toHaveCount(4);
   await page.locator(".incident-link").first().click();

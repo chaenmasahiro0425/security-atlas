@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 const base = process.env.ATLAS_BASE || "http://127.0.0.1:3182";
 test("clean home URL, safe defaults and legal hash survive repeat reloads", async ({ page }) => {
   await page.goto(base + "/?sort=newest&view=テーブル");
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   expect(new URL(page.url()).search).toBe("");
   await page.goto(base + "/?sort=invalid&view=invalid#privacy");
   await expect(page.getByRole("dialog")).toBeVisible();
@@ -19,15 +19,15 @@ test("feed chronological ordering, source attribution, filtering and full screen
   const errors: string[] = [];
   page.on("pageerror", e => errors.push(e.message));
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(45);
   await page.getByRole("button", { name: "新着", exact: true }).click();
   const cards = page.locator(".feed-card");
-  await expect(cards).toHaveCount(30);
+  await expect(cards).toHaveCount(45);
   const dates = await cards.locator("time").evaluateAll(es => es.map(e => e.getAttribute("datetime")));
   expect(dates).toEqual([...dates].sort().reverse());
   await expect(cards.first()).toContainText("アバハウス");
   const sources = await cards.locator(".feed-source").evaluateAll(es => es.map(e => ({ href: e.getAttribute("href"), target: e.getAttribute("target"), text: e.textContent })));
-  expect(sources).toHaveLength(30);
+  expect(sources).toHaveLength(45);
   expect(sources.every(s => s.href?.startsWith("https://") && s.target === "_blank" && s.text?.includes("一次情報"))).toBe(true);
   await page.getByRole("combobox", { name: "公表年" }).selectOption("2024");
   await expect(cards).toHaveCount(4);
@@ -45,9 +45,9 @@ test("feed chronological ordering, source attribution, filtering and full screen
   await expect(cards).toHaveCount(0);
   await expect(page.getByText("条件に一致する事例がありません")).toBeVisible();
   await page.getByRole("button", { name: "すべての事例を見る" }).click();
-  await expect(cards).toHaveCount(30);
+  await expect(cards).toHaveCount(45);
   await page.getByRole("combobox", { name: "並び順" }).selectOption("oldest");
-  await expect(cards.first()).toContainText("イセトー");
+  await expect(cards.first()).toContainText("GMOペイメントゲートウェイ");
   expect(errors).toEqual([]);
 });
 test("annual statistics distinguish approximate scale, exact total and coverage", async ({ page }) => {
@@ -69,7 +69,7 @@ for (const width of [320, 390, 768, 900, 1126, 1280, 1440])
   test(`feed, navigation and statistics fit after fonts load at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(base + "/?view=新着");
-    await expect(page.locator(".feed-card")).toHaveCount(30);
+    await expect(page.locator(".feed-card")).toHaveCount(45);
     await page.evaluate(() => document.fonts.ready);
     const fits = await page.evaluate(() => {
       const inside = (e: Element) => { const b = e.getBoundingClientRect(); return b.left >= -1 && b.right <= innerWidth + 1; };

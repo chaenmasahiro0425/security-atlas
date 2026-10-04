@@ -21,6 +21,7 @@ import "./style.css";
 import { Home, Community, Logo } from "./Home";
 import { LegalFooter } from "./Legal";
 import { Feed } from "./Feed";
+import { SecurityNews } from "./SecurityNews";
 type Research = {
   headline: string;
   scope: string;
@@ -74,8 +75,9 @@ function App() {
       fetch("./data/research.json").then((r) => r.json()),
       fetch("./data/additions-20261003.json").then((r) => r.json()),
       fetch("./data/history-2024-2025.json").then((r) => r.json()),
+      fetch("./data/history-2017-2023.json").then((r) => r.json()),
     ])
-      .then(([a, b, c, d]) =>
+      .then(([a, b, c, d, e]) =>
         R([
           ...a.map((r: Incident) => ({
             ...r,
@@ -84,6 +86,7 @@ function App() {
           })),
           ...c,
           ...d,
+          ...e,
         ]),
       )
       .catch(() => E(true));
@@ -158,6 +161,12 @@ function App() {
           事件データベース
         </button>
         <button
+          className={section === "watch" ? "active" : ""}
+          onClick={() => N("watch")}
+        >
+          <Shield size={17} /> セキュリティ情報ウォッチ
+        </button>
+        <button
           className={section === "prompts" ? "active" : ""}
           onClick={() => N("prompts")}
         >
@@ -188,7 +197,7 @@ function App() {
           公開情報から、次の備えへ。
           <br />
           <br />
-          確認日 2026.10.03
+          調査追加 2026.10.04
           <br />
           公開情報を調査 · 網羅性は未検証
         </p>
@@ -200,7 +209,7 @@ function App() {
             ? "事件データベース"
             : section === "prompts"
               ? "点検プロンプト"
-              : "MCP"}
+              : section === "watch" ? "セキュリティ情報ウォッチ" : "MCP"}
         </header>
         {section === "db" ? (
           <>
@@ -290,8 +299,8 @@ function App() {
               </select>
             </div>
             <p className="coverage">
-              対象公表年：2024–2026 · 最古の収録公表日：2024.05.29 ·
-              調査更新：2026.10.03 ·
+              対象公表年：{rows.length ? `${Math.min(...rows.map(r => Number(r.disclosedAt.slice(0, 4))))}–${Math.max(...rows.map(r => Number(r.disclosedAt.slice(0, 4))))}` : "読込中"} · 最古の収録公表日：{rows.length ? rows.map(r => r.disclosedAt).sort()[0].replaceAll("-", ".") : "読込中"} ·
+              調査更新：{rows.length ? rows.map(r => r.verifiedAt).sort().at(-1)?.replaceAll("-", ".") : "読込中"} ·
               代表事例を収録（全国の全事件を網羅する統計ではありません）
             </p>
             <div className="filters">
@@ -301,7 +310,7 @@ function App() {
                 onChange={(e) => Y(e.target.value)}
               >
                 <option value="">公表年：すべて</option>
-                {["2026", "2025", "2024"].map((x) => (
+                {[...new Set(rows.map(r => r.disclosedAt.slice(0, 4)))].sort().reverse().map((x) => (
                   <option key={x} value={x}>
                     {x}年
                   </option>
@@ -496,7 +505,7 @@ function App() {
               </p>
             </details>
           </>
-        ) : section === "prompts" ? (
+        ) : section === "watch" ? <SecurityNews /> : section === "prompts" ? (
           <>
             <div className="page-title">
               <Code size={35} />
@@ -795,7 +804,7 @@ function App() {
                       ))}
                   </section>
                 ))}
-                <small>確認日 2026.10.03</small>
+                <small>確認日 {current.verifiedAt}</small>
               </div>
             </div>
           </>
