@@ -31,4 +31,4 @@ jobs:
             sleep 1
           done
           exit 1
-      - run: npx playwright test tests/ui.spec.ts tests/experience.spec.ts tests/legal.spec.ts tests/feed.spec.ts tests/watch.spec.ts --workers=1
+      - run: npx playwright test tests/ui.spec.ts tests/experience.spec.ts tests/legal.spec.ts tests/feed.spec.ts tests/watch.spec.ts tests/blog.spec.ts --workers=1
