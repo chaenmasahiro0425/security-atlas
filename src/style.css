@@ -1761,6 +1761,16 @@ td { padding-block: 14px; height: 62px; }
 .site-footer { font-size: 13px; }
 .site-footer button { font-size: 13px; min-height: 44px; }
 .legal-external a { text-decoration: underline; text-underline-offset: 3px; }
+.security-news { min-width: 0; }
+.news-fetched { color: var(--muted); font-size: 14px; line-height: 1.8; }
+.news-warning { padding: 14px 18px; background: #fff7e4; border: 1px solid #e6c66c; border-radius: 12px; color: #6c4e16; line-height: 1.8; }
+.news-list { display: grid; gap: 12px; margin-top: 22px; }
+.news-card { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; min-width: 0; }
+.news-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.news-card a { display: flex; align-items: center; gap: 16px; color: var(--blue); text-decoration: none; }
+.news-card a h3 { font-size: 17px; line-height: 1.7; overflow-wrap: anywhere; }
+.news-card a svg { flex-shrink: 0; margin-left: auto; }
+@media (max-width: 650px) { .news-card { padding: 16px; } .news-card a h3 { font-size: 16px; } }
 @media (max-width: 700px) {
   .sidebar { gap: 4px 14px; }
   .sidebar button, .github-nav { font-size: 12px; }

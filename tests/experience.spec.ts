@@ -6,23 +6,23 @@ test("gallery filters, URL persistence and keyboard detail navigation", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(55);
   await page.getByRole("button", { name: "ギャラリー", exact: true }).click();
-  await expect(page.locator(".gallery-card")).toHaveCount(30);
+  await expect(page.locator(".gallery-card")).toHaveCount(55);
   await expect(
     page.getByRole("button", { name: "ギャラリー", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await page.getByRole("combobox", { name: "公表年" }).selectOption("2024");
-  await expect(page.locator(".gallery-card")).toHaveCount(4);
+  await expect(page.locator(".gallery-card")).toHaveCount(5);
   await page.reload();
-  await expect(page.locator(".gallery-card")).toHaveCount(4);
+  await expect(page.locator(".gallery-card")).toHaveCount(5);
   await page.locator(".gallery-card").first().focus();
   await page.keyboard.press("Enter");
   await expect(page.getByRole("dialog")).toBeVisible();
   await expect(
     page.getByRole("button", { name: "前の事件", exact: true }),
   ).toBeDisabled();
-  for (let i = 0; i < 3; i++)
+  for (let i = 0; i < 4; i++)
     await page.getByRole("button", { name: "次の事件", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "次の事件", exact: true }),
@@ -32,21 +32,21 @@ test("gallery filters, URL persistence and keyboard detail navigation", async ({
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.getByRole("button", { name: "一覧に戻る", exact: false }).click();
   await expect(page.getByRole("dialog")).not.toBeVisible();
-  await expect(page.locator(".gallery-card")).toHaveCount(4);
+  await expect(page.locator(".gallery-card")).toHaveCount(5);
   await page
     .getByRole("textbox", { name: "事件を検索" })
     .fill("存在しない事件zzzzz");
   await expect(page.locator(".gallery-card")).toHaveCount(0);
   await expect(page.getByText("条件に一致する事例がありません")).toBeVisible();
   await page.getByRole("button", { name: "すべての事例を見る" }).click();
-  await expect(page.locator(".gallery-card")).toHaveCount(30);
+  await expect(page.locator(".gallery-card")).toHaveCount(55);
   expect(errors).toEqual([]);
 });
 test("filtered JSON export matches displayed records and evidence links", async ({
   page,
 }) => {
   await page.goto(base + "/?year=2025&view=ギャラリー");
-  await expect(page.locator(".gallery-card")).toHaveCount(5);
+  await expect(page.locator(".gallery-card")).toHaveCount(6);
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "JSONを取得" }).click();
   const download = await downloadPromise;
@@ -55,7 +55,7 @@ test("filtered JSON export matches displayed records and evidence links", async 
   const chunks: Buffer[] = [];
   for await (const chunk of stream!) chunks.push(chunk);
   const rows = JSON.parse(Buffer.concat(chunks).toString());
-  expect(rows).toHaveLength(5);
+  expect(rows).toHaveLength(6);
   expect(rows.every((r: any) => r.disclosedAt.startsWith("2025"))).toBe(true);
   await page.getByRole("textbox", { name: "事件を検索" }).fill("アサヒ");
   await expect(page.locator(".gallery-card")).toHaveCount(1);
@@ -73,7 +73,7 @@ for (const width of [320, 390, 768, 1440])
   test(`gallery and details fit ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(base + "/?view=ギャラリー");
-    await expect(page.locator(".gallery-card")).toHaveCount(30);
+    await expect(page.locator(".gallery-card")).toHaveCount(55);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -99,11 +99,11 @@ test("data failure displays recovery message", async ({ page }) => {
   await expect(page.getByRole("alert")).toContainText("再読み込み");
   await page.unroute("**/data/history-2024-2025.json");
   await page.reload();
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(55);
 });
 test("contribution form validates inputs without sending", async ({ page }) => {
   await page.goto(base);
-  await expect(page.locator("tr.incident")).toHaveCount(30);
+  await expect(page.locator("tr.incident")).toHaveCount(55);
   const form = page.locator(".commons form");
   expect(await form.evaluate((e: HTMLFormElement) => e.checkValidity())).toBe(
     false,
