@@ -4,7 +4,7 @@ on:
     - cron: '17 23 * * *' # 08:17 Asia/Tokyo; GitHub may delay scheduled runs
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   actions: read
 concurrency:
   group: daily-security-collection
@@ -34,6 +34,10 @@ jobs:
             previous_file=/tmp/previous-security/security-news.json
           fi
           python3 scripts/collect-security.py --previous "$previous_file" --output /tmp/security-news.json
+      - name: Publish immutable snapshot for the approved production watch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/publish-security.py
       - name: Save collection for review (including partial failures)
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

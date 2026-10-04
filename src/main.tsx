@@ -76,8 +76,9 @@ function App() {
       fetch("./data/additions-20261003.json").then((r) => r.json()),
       fetch("./data/history-2024-2025.json").then((r) => r.json()),
       fetch("./data/history-2017-2023.json").then((r) => r.json()),
+      fetch("./data/additions-20261004.json").then((r) => r.json()),
     ])
-      .then(([a, b, c, d, e]) =>
+      .then(([a, b, c, d, e, f]) =>
         R([
           ...a.map((r: Incident) => ({
             ...r,
@@ -87,6 +88,7 @@ function App() {
           ...c,
           ...d,
           ...e,
+          ...f,
         ]),
       )
       .catch(() => E(true));

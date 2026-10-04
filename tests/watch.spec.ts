@@ -18,7 +18,7 @@ test('watch fetch failure does not break incident database', async ({ page }) =>
   await page.getByRole('button', { name: 'セキュリティ情報ウォッチ', exact: true }).click();
   await expect(page.getByRole('alert')).toBeVisible();
   await page.getByRole('button', { name: '事件データベース', exact: true }).click();
-  await expect(page.locator('tr.incident')).toHaveCount(45);
+  await expect(page.locator('tr.incident')).toHaveCount(55);
 });
 for (const width of [320, 390, 1280]) test(`watch fits at ${width}px`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });

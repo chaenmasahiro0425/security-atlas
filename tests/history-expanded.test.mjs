@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 const read = file => JSON.parse(readFileSync(`public/data/${file}`));
 const history = read('history-2017-2023.json');
-const all = [...read('incidents.json'), ...read('additions-20261003.json'), ...read('history-2024-2025.json'), ...history];
+const all = [...read('incidents.json'), ...read('additions-20261003.json'), ...read('history-2024-2025.json'), ...history, ...read('additions-20261004.json')];
 test('ten disclosure years are represented by distinct incidents with primary evidence', () => {
-  assert.equal(all.length, 45);
+  assert.equal(all.length, 55);
   assert.equal(new Set(all.map(row => row.id)).size, all.length);
   assert.deepEqual([...new Set(all.map(row => row.disclosedAt.slice(0, 4)))].sort(), Array.from({length: 10}, (_, i) => String(2017 + i)));
   for (const row of history) {
