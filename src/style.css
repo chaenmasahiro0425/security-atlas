@@ -1793,3 +1793,5 @@ td { padding-block: 14px; height: 62px; }
   .detail-dialog > .tabs { top: 0; position: relative; gap: 20px; }
   .detail-body { font-size: 14px; }
 }
+
+.article-nav { display: block; padding: 12px 16px; color: #08776b; font-size: 13px; text-decoration: none; border-radius: 8px; background: #eff8f5; margin-top: 12px; }

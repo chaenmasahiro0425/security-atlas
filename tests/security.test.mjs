@@ -29,6 +29,7 @@ test('all incident IDs and combined source IDs are unique and evidence resolves'
     ...JSON.parse(read('public/data/history-2024-2025.json')),
     ...JSON.parse(read('public/data/history-2017-2023.json')),
     ...JSON.parse(read('public/data/additions-20261004.json')),
+    ...JSON.parse(read('public/data/nikkei-20261004.json')),
   ];
   assert.equal(new Set(rows.map((row) => row.id)).size, rows.length);
   for (const row of rows) {
