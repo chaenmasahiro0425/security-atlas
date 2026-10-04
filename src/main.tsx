@@ -77,8 +77,9 @@ function App() {
       fetch("./data/history-2024-2025.json").then((r) => r.json()),
       fetch("./data/history-2017-2023.json").then((r) => r.json()),
       fetch("./data/additions-20261004.json").then((r) => r.json()),
+      fetch("./data/nikkei-20261004.json").then((r) => r.json()),
     ])
-      .then(([a, b, c, d, e, f]) =>
+      .then(([a, b, c, d, e, f, g]) =>
         R([
           ...a.map((r: Incident) => ({
             ...r,
@@ -89,6 +90,7 @@ function App() {
           ...d,
           ...e,
           ...f,
+          ...g,
         ]),
       )
       .catch(() => E(true));
@@ -182,6 +184,7 @@ function App() {
           <Plug size={17} />
           MCP <em>Coming soon</em>
         </button>
+        <a className="article-nav" href="/blog/nikkei-cloud-2026/index.html">解説記事：日経の不正ログイン</a>
         <a
           className="github-nav"
           href="https://github.com/chaenmasahiro0425/security-atlas"
@@ -640,6 +643,7 @@ function App() {
               <Logo name={current.organization} />
               {current.organization}
             </h2>
+            {current.id.startsWith("nikkei-") && <p><a href="/blog/nikkei-cloud-2026/index.html">日経の2つの事件を比較する解説記事を読む →</a></p>}
             <p>{current.title}</p>
             <div className="detail-meta">
               <span className="badge known">{current.causeStatus}</span>
