@@ -1,0 +1,662 @@
+{
+  "fetchedAt": "2026-10-06T02:57:56Z",
+  "feeds": [
+    {
+      "name": "JPCERT/CC",
+      "url": "https://www.jpcert.or.jp/rss/jpcert.rdf",
+      "kind": "公式の注意喚起",
+      "status": "ok",
+      "count": 36,
+      "lastSuccessAt": "2026-10-06T02:57:56Z"
+    },
+    {
+      "name": "piyolog",
+      "url": "https://piyolog.hatenadiary.jp/rss",
+      "kind": "二次情報・調査の入口",
+      "status": "ok",
+      "count": 30,
+      "lastSuccessAt": "2026-10-06T02:57:56Z"
+    }
+  ],
+  "items": [
+    {
+      "id": "bcd35f3c7911d319f9cc7114",
+      "title": "韓国の金融機関で相次いだ不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/06/103019",
+      "publishedAt": "2026-10-06T01:30:19Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "1adfb1637ca80c8a69f0aa74",
+      "title": "ジェリービーンズグループの資金流出についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/06/002029",
+      "publishedAt": "2026-10-05T15:20:29Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "4bf2e16ce2a83db141b55fd6",
+      "title": "e-Taxのシステム障害についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/05/151151",
+      "publishedAt": "2026-10-05T06:11:51Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "1d8283f3897b27290a72eaab",
+      "title": "日本経済新聞社へのサイバー攻撃となりすましメール送信についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/05/115509",
+      "publishedAt": "2026-10-05T02:55:09Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "f3edb0ed6961b73110bdd665",
+      "title": "ヤマト運輸のクロネコ代金後払いサービスへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/05/023139",
+      "publishedAt": "2026-10-04T17:31:39Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "1a989221b3695e7a45ca234a",
+      "title": "WordPress Coreの脆弱性CVE-2026-87902についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/03/001121",
+      "publishedAt": "2026-10-02T15:11:21Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "84c42b81ab46999a7ce0fd92",
+      "title": "ApplyNowの採用管理プラットフォームへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/02/174228",
+      "publishedAt": "2026-10-02T08:42:28Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "9a4378c5a003753a8693e84b",
+      "title": "注意喚起: NetScaler ADCおよびNetScaler Gatewayにおける複数の脆弱性（CVE-2026-88771、CVE-2026-88772等）に関する注意喚起  (更新)",
+      "url": "https://www.jpcert.or.jp/at/2026/at260029.html",
+      "publishedAt": "2026-10-02T05:15:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "185242cdb6ebafbb11ac606c",
+      "title": "VOISINGの利用するBIツールへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/10/01/112213",
+      "publishedAt": "2026-10-01T02:22:13Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "5cfab7e3ab3ee72d0b718b32",
+      "title": "Weekly Report: VeloCloud Orchestratorに不適切な入力確認の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#9",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "81bd1f81cf93319626c3bb29",
+      "title": "Weekly Report: Google Chromeに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#8",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "7d2019dd088aa2e3b77d1313",
+      "title": "Weekly Report: WordPressにPHPリモートファイルインクルージョンの脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#7",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "0b7c6ac5a91042b169b056dd",
+      "title": "Weekly Report: Microsoft Edgeに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#6",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "513ef44921e7922ca259e419",
+      "title": "Weekly Report: Next.jsのImageResponseにリモートコード実行につながる脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#5",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "c2cc6cfffe7fc6ae2fb5a03c",
+      "title": "Weekly Report: Apache Tomcatに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#4",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "51b54c628e680ecedb4c75c4",
+      "title": "Weekly Report: Cisco Secure Email GatewayにSQLインジェクションの脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#30",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "d0cb96b85f701ae1b0f04742",
+      "title": "Weekly Report: Unboundに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#3",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "70df15c00131dcb809492630",
+      "title": "Weekly Report: F5 BIG-IP Access Policy Managerにヒープベースのバッファオーバーフローの脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#29",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "7d06353fd30b180b3a393906",
+      "title": "Weekly Report: CERT PolskaがMikroTrickに関する技術分析を公開",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#28",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "71694a794e3e2a316199d5b7",
+      "title": "Weekly Report: ProgressのChef Automateに認証欠如の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#27",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "983e37e3daaf02fc08c8740c",
+      "title": "Weekly Report: 複数のApple製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#26",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "ce250b3d95d80f7584800f8d",
+      "title": "Weekly Report: Acronis Backup plugin for cPanel & WHMに権限昇格の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#25",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "b2c835f08ace72016e13c70d",
+      "title": "Weekly Report: 複数のOracle製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#24",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "155ec72ca5413c8c8d5cdffb",
+      "title": "Weekly Report: 複数のMozilla製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#23",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "5c8760bbaaec4d5a87b25c99",
+      "title": "Weekly Report: 複数のAtlassian製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#22",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "b9cc313d1638bfed7caebc58",
+      "title": "Weekly Report: LiteSpeed Web Server Enterpriseに権限昇格の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#21",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "fae278586fa87268b3bff760",
+      "title": "Weekly Report: IBM MQに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#20",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "ecca6a93f496decb8d85fd1a",
+      "title": "Weekly Report: 複数のAdobe製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#2",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "126eed94d1f6cb5450feb706",
+      "title": "Weekly Report: WordPress用プラグインThe Events Calendarに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#19",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "7d47a1518dd6805da458971f",
+      "title": "Weekly Report: QNDに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#18",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "5559542d3e70eec7e918c962",
+      "title": "Weekly Report: 複数のCisco製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#17",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "4e807932c4aebb94b1d67491",
+      "title": "Weekly Report: 複数のHPE製品に脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#16",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "95e07563b0b303294360a8af",
+      "title": "Weekly Report: 複数のJenkinsプラグインに脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#15",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "d7fe465298fec2b952383b0b",
+      "title": "Weekly Report: pgAdmin 4に複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#14",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "04b1ce72bb569fd3f9a43459",
+      "title": "Weekly Report: ISC BINDに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#13",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "3dcabc219c4a613bf6080d7a",
+      "title": "Weekly Report: Synology DiskStation Managerに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#12",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "7141fc6514ced2edb39314e2",
+      "title": "Weekly Report: 複数のCheck Point製品にパストラバーサルの脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#11",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "429356337a30af2ec6bfda6f",
+      "title": "Weekly Report: GitLabに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#10",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "04773eae6d8300619b3b8a32",
+      "title": "Weekly Report: ServiceNow AI Platformに複数の脆弱性",
+      "url": "https://www.jpcert.or.jp/wr/2026/wr260930.html#1",
+      "publishedAt": "2026-09-30T00:07:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "cd4f4566da5d8ae02049ff55",
+      "title": "NetScaler ADC/Gatewayの脆弱性CVE-2026-88771、CVE-2026-88772の悪用についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/30/080115",
+      "publishedAt": "2026-09-29T23:01:15Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "ff5d5622a01376201308946b",
+      "title": "ランサムウェア攻撃による京王電鉄グループのシステム障害についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/30/021814",
+      "publishedAt": "2026-09-29T17:18:14Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "cc6475a4a126f1690c0ecf86",
+      "title": "手間いらずの「TEMAIRAZU」シリーズへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/30/013735",
+      "publishedAt": "2026-09-29T16:37:35Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "d273016b72ba3a1b5b806a02",
+      "title": "タイムズカーWebサイトへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/28/214857",
+      "publishedAt": "2026-09-28T12:48:57Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "b8e35f1743cf82ed689c08eb",
+      "title": "AIエージェントによる利用者画像の外部サイト投稿についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/28/082600",
+      "publishedAt": "2026-09-27T23:26:00Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "79804a5d6eb9c3635c6b21e7",
+      "title": "楽天証券のシステム不具合による意図しない資金移動についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/28/015556",
+      "publishedAt": "2026-09-27T16:55:56Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "b3ec27dc620079de3007bb17",
+      "title": "OpenAIのAIエージェントによる豪州政府Medicare統計ポータルへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/26/070036",
+      "publishedAt": "2026-09-25T22:00:36Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "d3070da17f40fa28787172c5",
+      "title": "JCOMのインターネット接続サービス障害についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/25/145617",
+      "publishedAt": "2026-09-25T05:56:17Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "d977dd757d16e8272258ae6e",
+      "title": "日米豪独7機関が公表した北朝鮮のサイバー攻撃グループ「WaterPlum」と北朝鮮IT労働者についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/25/141110",
+      "publishedAt": "2026-09-25T05:11:10Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "8d832859b9bb7d71e920611e",
+      "title": "GoogleのAIモデルが評価中に実在企業のシステムへ侵入した事案についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/25/130414",
+      "publishedAt": "2026-09-25T04:04:14Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "2d173e7f4443a837b37f42b4",
+      "title": "注意喚起: F5 BIG-IP Access Policy Managerにおけるヒープベースのバッファオーバーフローの脆弱性（CVE-2026-94127）に関する注意喚起  (公開)",
+      "url": "https://www.jpcert.or.jp/at/2026/at260028.html",
+      "publishedAt": "2026-09-24T07:14:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "e796e60ae420be6b7eef249c",
+      "title": "美容医療プラットフォーム「Unni（カンナムオンニ）」への不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/24/141557",
+      "publishedAt": "2026-09-24T05:15:57Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "c7de3232139b450671da7743",
+      "title": "旭化成の元従業員による営業秘密の持ち出しについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/24/105225",
+      "publishedAt": "2026-09-24T01:52:25Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "aaaca20da840d1778daa2ba5",
+      "title": "NTTドコモによるAmazonへの顧客情報の無断提供についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/17/150301",
+      "publishedAt": "2026-09-17T06:03:01Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "620aaff7c438600d4891e992",
+      "title": "Gyazoへの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/17/032044",
+      "publishedAt": "2026-09-16T18:20:44Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "5270d081be9669a79bdbdb2c",
+      "title": "OpenAIのAIエージェントによるものとみられているRubyGemsへの不正なパッケージ大量投稿についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/16/085611",
+      "publishedAt": "2026-09-15T23:56:11Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "7d917b745746d9b9a9422c76",
+      "title": "注意喚起: Cisco Secure Email GatewayにおけるSQLインジェクションの脆弱性（CVE-2026-76461）に関する注意喚起  (公開)",
+      "url": "https://www.jpcert.or.jp/at/2026/at260027.html",
+      "publishedAt": "2026-09-15T06:42:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "6d4f6a053b8d5c2a10f88036",
+      "title": "4件目も見つかったAnthropicの評価中AIモデルによる不正アクセス事案についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/15/141320",
+      "publishedAt": "2026-09-15T05:13:20Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "6708cb89f8a47442de757c3e",
+      "title": "沖縄県知事選挙をめぐる偽情報や誹謗中傷の拡散についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/15/104634",
+      "publishedAt": "2026-09-15T01:46:34Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "3ba37a269f6b8eb01a6b60e5",
+      "title": "デジタル庁のガバメントソリューションサービス(GSS)への不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/11/220855",
+      "publishedAt": "2026-09-11T13:08:55Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "88d7eea62ee231a8dca24aa1",
+      "title": "AIエージェントによるドイツ語ウィキ「DseWiki」ののっとりについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/10/015745",
+      "publishedAt": "2026-09-09T16:57:45Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "64a44ea9bc6eac486e0136b1",
+      "title": "注意喚起: Adobe AcrobatおよびReaderの脆弱性（APSB26-141）に関する注意喚起  (公開)",
+      "url": "https://www.jpcert.or.jp/at/2026/at260026.html",
+      "publishedAt": "2026-09-09T02:20:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "7ba32e43849d337f75dd3885",
+      "title": "注意喚起: 2026年9月マイクロソフトセキュリティ更新プログラムに関する注意喚起  (公開)",
+      "url": "https://www.jpcert.or.jp/at/2026/at260025.html",
+      "publishedAt": "2026-09-09T02:20:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    },
+    {
+      "id": "f238dfc4c0097134355d5194",
+      "title": "Project Glasswingと日本国内の状況についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/08/164128",
+      "publishedAt": "2026-09-08T07:41:28Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "3efaa86240837b2a77f5d4ae",
+      "title": "鳥取県の放射線監視システムへのランサムウェア攻撃についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/07/090941",
+      "publishedAt": "2026-09-07T00:09:41Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "2a20f77cf42bf6b24e203f22",
+      "title": "大阪高裁で起きたMicrosoft Teams チーム作成時の大量誤登録についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/05/103543",
+      "publishedAt": "2026-09-05T01:35:43Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "32185ead81569df5df117011",
+      "title": "レノボの認証連携を悪用したDropboxの不正アクセスについてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/04/141128",
+      "publishedAt": "2026-09-04T05:11:28Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "8d88c51cb0d5ee730da0ae24",
+      "title": "2つの重要インフラ組織へ行われたレッドチーム評価についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/04/134335",
+      "publishedAt": "2026-09-04T04:43:35Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "4789bb5c941a789231639493",
+      "title": "AIエージェントが10時間足らずで企業ネットワークに侵入した事例についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/04/115554",
+      "publishedAt": "2026-09-04T02:55:54Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "86032c624fe245184b9336a0",
+      "title": "監視機器の自動更新で起きた市立奈良病院のシステム障害についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/04/104347",
+      "publishedAt": "2026-09-04T01:43:47Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "79e049edad1517e2b3fe92a8",
+      "title": "ランサムウェアグループによるCursorの悪用についてまとめてみた",
+      "url": "https://piyolog.hatenadiary.jp/entry/2026/09/02/022540",
+      "publishedAt": "2026-09-01T17:25:40Z",
+      "source": "piyolog",
+      "kind": "二次情報・調査の入口",
+      "status": "未確認"
+    },
+    {
+      "id": "9eb2e036a07c53b885378ee4",
+      "title": "注意喚起: NetScaler ADCおよびNetScaler Gatewayにおけるリモートコード実行につながる脆弱性（CVE-2026-8452）に関する注意喚起  (公開)",
+      "url": "https://www.jpcert.or.jp/at/2026/at260024.html",
+      "publishedAt": "2026-08-15T05:31:00Z",
+      "source": "JPCERT/CC",
+      "kind": "公式の注意喚起",
+      "status": "未確認"
+    }
+  ]
+}
